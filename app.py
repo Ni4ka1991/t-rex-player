@@ -14,7 +14,25 @@ import matplotlib.pyplot as plt
 #LOAD IMAGE AS TENSOR
 
 img = read_image( "images/t-rex-up-1.jpg" )  #read image as tensor???
+print( img )
 print( img.shape )
+
+img_gray = rgb_to_grayscale( img )
+print( img_gray )
+print( img_gray.shape )
+
+img_invert = invert(img_gray)
+print( img_invert )
+print( img_invert.shape )
+
+
+cnn = nn.Conv2d( 1, 1, 7 )
+img_filtered = cnn( img_invert )
+print( img_filtered )
+print( img_filtered.shape )
+
+
+
 
 
 '''
