@@ -12,6 +12,19 @@ import matplotlib.pyplot as plt
 
 
 #LOAD IMAGE AS TENSOR
+
+img = read_image( "images/t-rex-up-1.jpg" )  #read image as tensor???
+print( img.shape )
+
+
+'''
+plt.imshow( img, interpolation = 'nearest', cmap='gray' )
+plt.show()
+img_gray = rgb_to_grayscale(img)
+#plt.imshow( tensor.permute( 1, 2, 0 ), cmap='gray' )
+#plt.show()
+
+
 tensor = invert( rgb_to_grayscale(
         read_image( "images/t-rex-up-1.jpg" )
 )).type(torch.float32)
@@ -45,3 +58,4 @@ plt.show()
 #y = model( tensor )
 #plt.imshow( y.detach().permute( 1, 2, 0 ), cmap='gray' )
 #plt.show()
+'''
