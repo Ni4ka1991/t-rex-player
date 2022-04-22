@@ -4,6 +4,7 @@
 import torch
 from torch import nn
 from torchvision.transforms.functional import rgb_to_grayscale, invert, normalize
+from torchvision import transforms
 from torchvision.io import read_image
 from PIL import Image, ImageOps
 
@@ -12,25 +13,28 @@ import matplotlib.pyplot as plt
 
 
 #LOAD IMAGE AS TENSOR
-tensor = invert( rgb_to_grayscale(
-        read_image( "images/t-rex-up-1.jpg" )
-)).type(torch.float32)
+img = Image.open( 'images/t-rex-up-1.jpg' )
+print( 'This is an original size of image >>>', img.size, '\n' )
+img_gray = ImageOps.grayscale(img)
 
-print( tensor )
-print( tensor.shape )
-tensor2 = tensor.unsqueeze_(0)
+img_invert = invert(img_gray)
 
-
-#plt.imshow( tensor.permute( 1, 2, 0 ), cmap='gray' )
+#plt.figure()
+#plt.imshow( img_invert, interpolation='nearest', cmap = 'gray' )
 #plt.show()
 
+img_tensor = transforms.ToTensor()(img_invert).unsqueeze_(0)
+print( img_tensor )
+print( img_tensor.shape )
 
+
+
+'''
 cnn = nn.Conv2d( 1, 1, 40 )
 
 filtered_img = cnn( tensor2 )
 
 plt.figure()
-
 plt.imshow( filtered_img.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
 plt.show()
 
@@ -45,3 +49,4 @@ plt.show()
 #y = model( tensor )
 #plt.imshow( y.detach().permute( 1, 2, 0 ), cmap='gray' )
 #plt.show()
+'''
