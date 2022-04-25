@@ -17,18 +17,15 @@ import matplotlib.pyplot as plt
 #LOAD IMAGE AS TENSOR
 system( "clear" )
 
-img           = read_image( "images/t-rex-up-1.jpg" )  #read image as tensor!!!
-img_gray      = rgb_to_grayscale( img )
-img_invert    = invert(img_gray)
-img_float     = img_invert.type(torch.float32)
-img_normalize = normalize( img_float )
-img_unsq      = img_normalize.unsqueeze_(0)
+tensor = ( normalize( invert( rgb_to_grayscale(
+    read_image( "images/t-rex-up-1.jpg" ))).type(torch.float32))
+).unsqueeze_(0)
 
 model = nn.Sequential(
         nn.Conv2d( 1, 1, (40,40))
 )
 
-y = model( img_unsq )
+y = model( tensor )
 print(y.shape)
 img_sqz = y.squeeze(0)
 plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
