@@ -36,7 +36,33 @@ def detectPlayerPosition( tensor, weights ):
 
     return y_pos
 
+def detectImminentThreat( tensor, weights ):
+    model = nn.Sequential(
+            nn.Conv2d( 1, 1, ( 46, 46 )),
+            nn.MaxPool2d(( 1, 19 )),
+    )
+
+    model[0].weight = nn.Parameter( weights ) 
+    y = model( tensor )
+    y_pos = torch.argmax(y)
+
+    return y_pos
+
 tensor  = loadImageAsTensor( "images/t-rex-bottom-2.jpg" )
 weights = loadImageAsTensor( "images/t-rex-weights.jpg" )
 
+
+
+tensor_cactus  = loadImageAsTensor( "images/two-1.jpg" )
+weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
+
+
+
+
+
+
+
+
 print( detectPlayerPosition( tensor, weights ))
+print(detectImminentThreat( tensor_cactus, weights_cactus ))
+
