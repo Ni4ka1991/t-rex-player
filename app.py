@@ -17,18 +17,26 @@ import matplotlib.pyplot as plt
 #LOAD IMAGE AS TENSOR
 system( "clear" )
 
-tensor = ( normalize( invert( rgb_to_grayscale(
-    read_image( "images/t-rex-up-1.jpg" ))).type(torch.float32))
-).unsqueeze_(0)
+def loadImageAsTensor( path ):
+    tensor = ( normalize( invert( rgb_to_grayscale(
+        read_image( path ))).type(torch.float32))
+    ).unsqueeze_(0)
+    
+    return tensor
 
-model = nn.Sequential(
-        nn.Conv2d( 1, 1, (40,40))
-)
+def detectPlayerPosition( tensor, weights ):
+    model = nn.Sequential(
+            nn.Conv2d( 1, 1, ( 43, 43 )),
+            nn.MaxPool2d(( 1, 22 )),
+    )
 
-y = model( tensor )
-print(y.shape)
-img_sqz = y.squeeze(0)
-plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
-plt.show()
-'''
-'''
+    model[0].weight = nn.Parameter( weights ) 
+    y = model( tensor )
+    y_pos = torch.argmax(y)
+
+    return y_pos
+
+tensor  = loadImageAsTensor( "images/t-rex-bottom-2.jpg" )
+weights = loadImageAsTensor( "images/t-rex-weights.jpg" )
+
+print( detectPlayerPosition( tensor, weights ))
