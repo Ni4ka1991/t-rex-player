@@ -32,12 +32,11 @@ weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
             nn.Conv2d( 1, 1, ( 46, 46 )),
-            nn.MaxPool2d(( 1, 19 )),
+            nn.AvgPool2d(( 1, 19 )),
     )
 
     model[0].weight = nn.Parameter( weights ) 
     y = model( tensor )
-    y_pos = torch.argmax(y)
 
 
 
