@@ -18,6 +18,17 @@ from os import system
 #LOAD IMAGE AS TENSOR
 system( "clear" )
 
+def searchBorders( np_array ):
+    print( np_array.shape ) # ( 113, 19 )
+    tr_array = np_array.transpose()
+    print( tr_array )
+    print( tr_array.shape ) # ( 19, 113 )
+#    np_mean = numpy.mean( np_array[0] )
+    #1. np_array.shape
+    #2. search column borders
+    #3. search string borders
+    #4. intersection points
+
 def view_img( img ):
     img_sqz = img.squeeze(0)
     plt.figure()
@@ -41,22 +52,27 @@ def detectImminentThreat( tensor, weights ):
 
     model[0].weight = nn.Parameter( weights ) 
     y = model( tensor )
-    
+#    y = normalize( y )    
+
     #tensor as numpy 2d array
     y = y.detach()
     ny = y.numpy()
     y2d = ny[0][0]
+    return y2d     #return 2d np_array
 
-    #search left border
-    print( f"\ny2d[0] >>> {y2d[0]}\n" )
-    border = 0
-    y_mean = numpy.mean( y2d[0] )
-    for i in y2d[0]:
-        if i >= y_mean:
-            border = i
-            print( f"border = {border}" )
-            break
-#    return y_mean
 
-y = detectImminentThreat( tensor_cactus, weights_cactus )
-print(y)
+
+
+np_array = detectImminentThreat( tensor_cactus, weights_cactus )
+#print( np_array )
+searchBorders( np_array )
+
+
+
+
+
+
+
+
+
+
