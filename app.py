@@ -53,6 +53,12 @@ def detectImminentThreat( tensor, weights ):
 #    print( y.shape )
     print( f"y[0][0] >>> \n{y[0][0]}\n" )
     print( f"y[0][0][0] >>> \n{y[0][0][0]}\n" )
+    a = y[0][0][0]
+    print( f"a[0] >>> {a[0]}" )
+    print( f"a[18] >>> {a[18]}" )
+#    print( f"a[19] >>> {a[19]}" )  >>> Error
+    print( f"\na = y[0][0][0] >>> {a}\n" )
+
     print( f"y[0][0][1] >>> \n{y[0][0][1]}\n" )
     print( f"y[0][0][2] >>> \n{y[0][0][2]}\n" )
     print( f"y[0][0][22] >>> \n{y[0][0][22]}\n" )
