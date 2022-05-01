@@ -51,11 +51,18 @@ def detectImminentThreat( tensor, weights ):
 #    y = normalize( y )
 #    print( y )
 #    print( y.shape )
-    print( f"y[0][0] >>> \n{y[0][0]}" )
-    print( f"y[0][0][0] >>> \n{y[0][0][0]}" )
-    print( f"y[0][0][1] >>> \n{y[0][0][1]}" )
-    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}" )
-    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}" )
+    print( f"y[0][0] >>> \n{y[0][0]}\n" )
+    print( f"y[0][0][0] >>> \n{y[0][0][0]}\n" )
+    print( f"y[0][0][1] >>> \n{y[0][0][1]}\n" )
+    print( f"y[0][0][2] >>> \n{y[0][0][2]}\n" )
+    print( f"y[0][0][22] >>> \n{y[0][0][22]}\n" )
+    print( f"y[0][0][112] >>> \n{y[0][0][112]}\n" )
+    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}\n" )
+    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}\n" )
+    print( f"y[0][0][1][0] >>> \n{y[0][0][1][0]}\n" )
+    print( f"y[0][0][1][1] >>> \n{y[0][0][1][1]}\n" )
+    
+    '''
     y = normalize( y )
 #    y = y.squeeze_( 0 )
     print("\nNORMALIZE>>>\n")
@@ -66,7 +73,7 @@ def detectImminentThreat( tensor, weights ):
 
 #    print( y[0][0][0][1] )
 #    return y_pos    
-
+    '''
 
 
 
