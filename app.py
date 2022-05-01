@@ -9,9 +9,10 @@ from torchvision.io import read_image
 from PIL import Image, ImageOps
 from os import system
 
-
-#PLOT
+#OTHER
 import matplotlib.pyplot as plt
+import numpy
+from os import system
 
 
 #LOAD IMAGE AS TENSOR
@@ -27,15 +28,11 @@ def loadImageAsTensor( path ):
     tensor = ( normalize( invert( rgb_to_grayscale(
         read_image( path ))).type(torch.float32))
     ).unsqueeze_(0)
-#    print( f"{path} >>> \n{tensor}" )
-#    print( f"{path} >>> {tensor.shape}" )
     return tensor
 
 tensor_cactus  = loadImageAsTensor( "images/two-1.jpg" )
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
 
-#view_img( tensor_cactus )
-#view_img( weights_cactus )
 
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
@@ -44,39 +41,22 @@ def detectImminentThreat( tensor, weights ):
 
     model[0].weight = nn.Parameter( weights ) 
     y = model( tensor )
-    return y
-
-
-'''
-    print( f"a[0] >>> {a[0]}" )
-    print( f"a[18] >>> {a[18]}" )
-#    print( f"a[19] >>> {a[19]}" )  >>> Error
-    print( f"\na = y[0][0][0] >>> {a}\n" )
-
-    print( f"y[0][0][1] >>> \n{y[0][0][1]}\n" )
-    print( f"y[0][0][2] >>> \n{y[0][0][2]}\n" )
-    print( f"y[0][0][22] >>> \n{y[0][0][22]}\n" )
-    print( f"y[0][0][112] >>> \n{y[0][0][112]}\n" )
-    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}\n" )
-    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}\n" )
-    print( f"y[0][0][1][0] >>> \n{y[0][0][1][0]}\n" )
-    print( f"y[0][0][1][1] >>> \n{y[0][0][1][1]}\n" )
     
+    #tensor as numpy 2d array
+    y = y.detach()
+    ny = y.numpy()
+    y2d = ny[0][0]
 
-    y = normalize( y )
-#    y = y.squeeze_( 0 )
-    print("\nNORMALIZE>>>\n")
-    print( f"y[0][0] >>> \n{y[0][0]}" )
-    print( f"y[0][0][0] >>> \n{y[0][0][0]}" )
-    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}" )
-    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}" )
-
-#    print( y[0][0][0][1] )
-#    return y_pos    
-    '''
-
+    #search left border
+    print( f"\ny2d[0] >>> {y2d[0]}\n" )
+    border = 0
+    y_mean = numpy.mean( y2d[0] )
+    for i in y2d[0]:
+        if i >= y_mean:
+            border = i
+            print( f"border = {border}" )
+            break
+#    return y_mean
 
 y = detectImminentThreat( tensor_cactus, weights_cactus )
-y_str   = y.shape[2]
-y_colum = y.shape[3]
-
+print(y)
