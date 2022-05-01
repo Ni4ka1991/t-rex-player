@@ -23,7 +23,13 @@ def searchBorders( np_array ):
     tr_array = np_array.transpose()
     print( tr_array )
     print( tr_array.shape ) # ( 19, 113 )
-#    np_mean = numpy.mean( np_array[0] )
+    shape = tr_array.shape
+
+    for i in range( 0, shape[0] ):
+        mean_str = numpy.mean( tr_array[i] )
+        print( f"mean in str {i} >>> {mean_str}" )    
+
+
     #1. np_array.shape
     #2. search column borders
     #3. search string borders
