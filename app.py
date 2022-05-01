@@ -40,20 +40,14 @@ weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
             nn.Conv2d( 1, 1, ( 46, 46 )),  # >>> exit 113x19 img
-#            nn.AvgPool2d(( 113, 19 )),
     )
 
     model[0].weight = nn.Parameter( weights ) 
     y = model( tensor )
-#    y_pos = torch.argmax( y )
-#    print( f"y.shape >>> {y.shape}" )
-#    view_img( y )
-#    y = normalize( y )
-#    print( y )
-#    print( y.shape )
-    print( f"y[0][0] >>> \n{y[0][0]}\n" )
-    print( f"y[0][0][0] >>> \n{y[0][0][0]}\n" )
-    a = y[0][0][0]
+    return y
+
+
+'''
     print( f"a[0] >>> {a[0]}" )
     print( f"a[18] >>> {a[18]}" )
 #    print( f"a[19] >>> {a[19]}" )  >>> Error
@@ -68,7 +62,7 @@ def detectImminentThreat( tensor, weights ):
     print( f"y[0][0][1][0] >>> \n{y[0][0][1][0]}\n" )
     print( f"y[0][0][1][1] >>> \n{y[0][0][1][1]}\n" )
     
-    '''
+
     y = normalize( y )
 #    y = y.squeeze_( 0 )
     print("\nNORMALIZE>>>\n")
@@ -82,9 +76,7 @@ def detectImminentThreat( tensor, weights ):
     '''
 
 
-
-
-
-
-print(detectImminentThreat( tensor_cactus, weights_cactus ))
+y = detectImminentThreat( tensor_cactus, weights_cactus )
+y_str   = y.shape[2]
+y_colum = y.shape[3]
 
