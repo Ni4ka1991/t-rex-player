@@ -51,8 +51,19 @@ def detectImminentThreat( tensor, weights ):
 #    y = normalize( y )
 #    print( y )
 #    print( y.shape )
+    print( f"y[0][0] >>> \n{y[0][0]}" )
     print( f"y[0][0][0] >>> \n{y[0][0][0]}" )
     print( f"y[0][0][1] >>> \n{y[0][0][1]}" )
+    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}" )
+    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}" )
+    y = normalize( y )
+#    y = y.squeeze_( 0 )
+    print("\nNORMALIZE>>>\n")
+    print( f"y[0][0] >>> \n{y[0][0]}" )
+    print( f"y[0][0][0] >>> \n{y[0][0][0]}" )
+    print( f"y[0][0][0][0] >>> \n{y[0][0][0][0]}" )
+    print( f"y[0][0][0][1] >>> \n{y[0][0][0][1]}" )
+
 #    print( y[0][0][0][1] )
 #    return y_pos    
 
