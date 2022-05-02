@@ -14,8 +14,16 @@ tensor_cactus  = loadImageAsTensor( "images/stalk-1.jpg" )
 
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
 #weights_vertical = weightsCreator( 46, 46 )
-print( weightsCreator( 46, 46 ))
-
+#print( weightsCreator( 46, 46 ))
+'''
+weights_vertical = torch.tensor([[[[0., 0., 1., 0., 0.,],
+                       [0., 0., 1., 0., 0.,],
+                       [0., 0., 1., 0., 0.,],
+                       [0., 0., 1., 0., 0.,],
+                       [0., 0., 1., 0., 0.,]
+                       ]]])
+'''
+weights_vertical = torch.tensor( weightsCreator( 46, 46 ))
 #view_img( tensor_cactus  )
 #view_img( weights_cactus )
 
@@ -37,7 +45,7 @@ def detectImminentThreat( tensor, weights ):
 
 
 
-#np_array = detectImminentThreat( tensor_cactus, weights_vertical )
+np_array = detectImminentThreat( tensor_cactus, weights_vertical )
 #print( np_array )
 #searchBorders( np_array )
 

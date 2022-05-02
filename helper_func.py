@@ -55,6 +55,6 @@ def weightsCreator( x, y ):
     arr[0:y, midd] = 1.
 #    arr = np.expand_dims( arr, axis = 0 )    # add axis=0
     arr = arr[np.newaxis, np.newaxis, :, : ]  # add axis=0 and axis=1
-    arr = torch.from_numpy( arr )
+#    arr = torch.from_numpy( arr )
     return arr
 
