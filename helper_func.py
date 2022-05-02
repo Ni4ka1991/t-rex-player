@@ -10,7 +10,7 @@ from os import system
 
 #OTHER
 import matplotlib.pyplot as plt
-import numpy
+import numpy as np
 from os import system
 
 
@@ -45,4 +45,10 @@ def searchBorders( np_array ):
     #2. search column borders
     #3. search string borders
     #4. intersection points
+
+def weightsCreator( x, y ):
+    arr = np.zeros(( x , y ), dtype = np.float )
+    arr[::][2:] = 3.
+
+    return arr
 
