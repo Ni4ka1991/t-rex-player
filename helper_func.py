@@ -48,7 +48,9 @@ def searchBorders( np_array ):
 
 def weightsCreator( x, y ):
     arr = np.zeros(( x , y ), dtype = np.float )
-    arr[::][2:] = 3.
-
+    midd = int( y/2 )
+#    print( f"midd = {midd}" )
+    arr[0:y, midd] = 1.
+    arr = torch.from_numpy( arr )
     return arr
 

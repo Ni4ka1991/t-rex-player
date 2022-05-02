@@ -10,18 +10,21 @@ from os import system
 
 
 #LOAD IMAGE AS TENSOR
+vert_arr = weightsCreator( 46, 46 )
 tensor_cactus  = loadImageAsTensor( "images/stalk-1.jpg" )
 
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
-weights_vertical = torch.tensor([[[[0., 1., 0.],
-                                   [0., 1., 0.],
-                                   [0., 1., 0.]]]])
+#weights_vertical = torch.tensor([[[[0., 1., 0.],
+#                                   [0., 1., 0.],
+#                                   [0., 1., 0.]]]])
+
+print( vert_arr )
 #view_img( tensor_cactus  )
 #view_img( weights_cactus )
 
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
-            nn.Conv2d( 1, 1, ( 3, 3 )),  # >>> exit 113x19 img
+            nn.Conv2d( 1, 1, ( 46, 46 )),  # >>> exit 113x19 img
     )
 
     model[0].weight = nn.Parameter( weights ) 
@@ -38,7 +41,6 @@ def detectImminentThreat( tensor, weights ):
 
 
 #np_array = detectImminentThreat( tensor_cactus, weights_vertical )
-print( weightsCreator( 5, 12 ))
 #print( np_array )
 #searchBorders( np_array )
 
