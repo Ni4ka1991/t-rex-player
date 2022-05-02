@@ -47,10 +47,14 @@ def searchBorders( np_array ):
     #4. intersection points
 
 def weightsCreator( x, y ):
-    arr = np.zeros(( x , y ), dtype = np.float )
+    arr = np.zeros(( x , y ), dtype = np.float32 )
+#    print( f"arr.shape >>> {arr.shape}" )
+#    print( f"arr.shape >>> {arr.shape}" )
     midd = int( y/2 )
 #    print( f"midd = {midd}" )
     arr[0:y, midd] = 1.
+#    arr = np.expand_dims( arr, axis = 0 )    # add axis=0
+    arr = arr[np.newaxis, np.newaxis, :, : ]  # add axis=0 and axis=1
     arr = torch.from_numpy( arr )
     return arr
 

@@ -10,15 +10,12 @@ from os import system
 
 
 #LOAD IMAGE AS TENSOR
-vert_arr = weightsCreator( 46, 46 )
 tensor_cactus  = loadImageAsTensor( "images/stalk-1.jpg" )
 
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
-#weights_vertical = torch.tensor([[[[0., 1., 0.],
-#                                   [0., 1., 0.],
-#                                   [0., 1., 0.]]]])
+#weights_vertical = weightsCreator( 46, 46 )
+print( weightsCreator( 46, 46 ))
 
-print( vert_arr )
 #view_img( tensor_cactus  )
 #view_img( weights_cactus )
 
