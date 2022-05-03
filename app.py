@@ -23,7 +23,9 @@ weights_vertical = torch.tensor([[[[0., 0., 1., 0., 0.,],
                        [0., 0., 1., 0., 0.,]
                        ]]])
 '''
-weights_vertical = torch.tensor( weightsCreator( 46, 46 ))
+#weights_vertical = torch.tensor( weightsCreator( 46, 46 ))
+weights_vertical =  weightsCreator( 46, 46 )
+#print( type( weights_vertical ))
 #view_img( tensor_cactus  )
 #view_img( weights_cactus )
 
