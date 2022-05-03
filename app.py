@@ -8,30 +8,29 @@ from torch import nn
 from helper_func import *
 from os import system
 
+arr_dim = 25
 
 #LOAD IMAGE AS TENSOR
-tensor_cactus  = loadImageAsTensor( "images/stalk-1.jpg" )
-
+tensor_cactus  = loadImageAsTensor( "images/mid-3.jpg" )
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
-#weights_vertical = weightsCreator( 46, 46 )
-#print( weightsCreator( 46, 46 ))
-'''
-weights_vertical = torch.tensor([[[[0., 0., 1., 0., 0.,],
-                       [0., 0., 1., 0., 0.,],
-                       [0., 0., 1., 0., 0.,],
-                       [0., 0., 1., 0., 0.,],
-                       [0., 0., 1., 0., 0.,]
-                       ]]])
-'''
-#weights_vertical = torch.tensor( weightsCreator( 46, 46 ))
-weights_vertical =  weightsCreator( 46, 46 )
-#print( type( weights_vertical ))
+
+#CREATE OUN CONVOLUTION NEURON
+weights_vertical =  weightsCreator( arr_dim )
+#print( weightsCreator( arr_dim ))
+
+#VIEW IMG
 #view_img( tensor_cactus  )
 #view_img( weights_cactus )
 
+
+
+
+
+
+#MODEL
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
-            nn.Conv2d( 1, 1, ( 46, 46 )),  # >>> exit 113x19 img
+            nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),  # >>> exit 113x19 img
     )
 
     model[0].weight = nn.Parameter( weights ) 
@@ -48,8 +47,6 @@ def detectImminentThreat( tensor, weights ):
 
 
 np_array = detectImminentThreat( tensor_cactus, weights_vertical )
-#print( np_array )
-#searchBorders( np_array )
 
 
 

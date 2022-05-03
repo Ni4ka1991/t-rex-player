@@ -46,18 +46,62 @@ def searchBorders( np_array ):
     #3. search string borders
     #4. intersection points
 
-def weightsCreator( x, y ):
-    arr = np.zeros(( x , y ), dtype = np.float32 )
-#    print( f"arr.shape >>> {arr.shape}" )
-#    print( f"arr.shape >>> {arr.shape}" )
-    midd = int( y/2 )
+def weightsCreator( x ):
+    ##create an 2d array x*x
+    arr = np.zeros(( x , x ), dtype = np.float32 )
+
+    ##search for the middle of an axis=1
+    midd = round( int( x/2 ))
+
+    ##view result
 #    print( f"midd = {midd}" )
-    arr[0:y, midd] = 1.
-#    arr = np.expand_dims( arr, axis = 0 )    # add axis=0
+    
+    ##zeros padding in column[midd]
+    arr[0:x, (midd + 0)] = 1.
+    arr[0:x, (midd - 2)] = 1.
+    arr[0:x, (midd + 2)] = 1.
+    arr[0:x, (midd - 4)] = 1.
+    arr[0:x, (midd + 4)] = 1.
+    
+    ##add two axis in position 0 ant 1
     arr = arr[np.newaxis, np.newaxis, :, : ]  # add axis=0 and axis=1
-#    arr = torch.from_numpy( arr )
+    
+    ##numpy to torch.tensor
     arr = torch.tensor( arr )
-#    print( arr )
     
     return arr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
