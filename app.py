@@ -17,7 +17,7 @@ weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
 #CREATE OUN CONVOLUTION NEURON
 weights_vertical =  weightsCreator( arr_dim )
 #print( weightsCreator( arr_dim ))
-weightsCreator( arr_dim )
+#weightsCreator( arr_dim )
 
 #VIEW IMG
 #view_img( tensor_cactus  )
@@ -47,7 +47,7 @@ def detectImminentThreat( tensor, weights ):
 
 
 
-#np_array = detectImminentThreat( tensor_cactus, weights_vertical )
+np_array = detectImminentThreat( tensor_cactus, weights_vertical )
 
 
 

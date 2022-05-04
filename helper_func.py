@@ -49,34 +49,16 @@ def searchBorders( np_array ):
 def weightsCreator( n ):
     ##create an 2d array x*x
     pattern_list = [i % 2 for i in range( n )]
-    arr = np.array( pattern_list )
+    arr = np.array( pattern_list, dtype = np.float32 )
     arr = np.broadcast_to( arr, (n, n) )
-    print(arr)
-'''
-#    arr = np.zeros(( x ), dtype = np.float32 )
-
-    ##search for the middle of an axis=1
-    midd = round( int( x/2 ))
-
-    ##view result
-#    print( f"midd = {midd}" )
-    
-    ##zeros padding in column[midd]
-    arr[0:x, (midd + 0)] = 1.
-    arr[0:x, (midd - 2)] = 1.
-    arr[0:x, (midd + 2)] = 1.
-    arr[0:x, (midd - 4)] = 1.
-    arr[0:x, (midd + 4)] = 1.
     
     ##add two axis in position 0 ant 1
     arr = arr[np.newaxis, np.newaxis, :, : ]  # add axis=0 and axis=1
-    
+            
     ##numpy to torch.tensor
     arr = torch.tensor( arr )
-    
+                        
     return arr
-'''
-
 
 
 
