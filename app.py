@@ -8,6 +8,7 @@ from torch import nn
 from helper_func import *
 from os import system
 
+system( "clear" )
 arr_dim = 25
 
 #LOAD IMAGE AS TENSOR
@@ -32,29 +33,23 @@ weights_vertical =  weightsCreator( arr_dim )
 def detectImminentThreat( tensor, weights ):
     model = nn.Sequential(
             nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),  # >>> exit 113x19 img
+            nn.AvgPool2d(( 1, 40 ))
     )
 
     model[0].weight = nn.Parameter( weights ) 
     y = model( tensor )
+    print( f"y.shape = {y.shape}" )
 #    y = normalize( y )    
-    view_img( y )
-    #tensor as numpy 2d array
-#    y = y.detach()
-#    ny = y.numpy()
-#    y2d = ny[0][0]
+#    view_img( y )
+
+     #tensor as numpy 2d array
+    y = y.detach()
+    ny = y.numpy()
+    y2d = ny[0][0]
+    print( y2d )
 #    return y2d     #return 2d np_array
 
 
 
 
 np_array = detectImminentThreat( tensor_cactus, weights_vertical )
-
-
-
-
-
-
-
-
-
-

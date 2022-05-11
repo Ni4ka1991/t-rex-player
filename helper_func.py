@@ -43,22 +43,28 @@ def searchBorders( np_array ):
 
     #1. np_array.shape
     #2. search column borders
-    #3. search string borders
+    #3. search row borders
     #4. intersection points
 
 def weightsCreator( n ):
     ##create an 2d array x*x
-    pattern_list = [i % 2 for i in range( n )]
+#    pattern_list = [i % 2 for i in range( n )]
+    pattern_list = [0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0] #25 the best result  
+
+
     arr = np.array( pattern_list, dtype = np.float32 )
     arr = np.broadcast_to( arr, (n, n) )
-    
+    sh = arr.shape
+    if sh[0] != sh[1]:
+        print("Error! Result array is't Square matrix")
+
     ##add two axis in position 0 ant 1
     arr = arr[np.newaxis, np.newaxis, :, : ]  # add axis=0 and axis=1
             
     ##numpy to torch.tensor
-    arr = torch.tensor( arr )
+    torch_arr = torch.tensor( arr )
                         
-    return arr
+    return torch_arr
 
 
 
