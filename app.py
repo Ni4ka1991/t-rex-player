@@ -30,40 +30,16 @@ weights_vertical =  weightsCreator( arr_dim )
 
 
 #MODEL
-def detectImminentThreat( tensor, weights, arr_dim ):
-    model_H = nn.Sequential(
-            nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),  #arr_dim => filter dimentions
-            nn.AvgPool2d(( 1, 40 ))
-    )
-
-    model_H[0].weight = nn.Parameter( weights ) 
-    y = model_H( tensor )
-    view_img( y )
+def detectImminentThreat( tensor, weights, arr_dim ):     #arr_dim => filter dimentions
     
-
-    model_W = nn.Sequential(
-            nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),  #arr_dim => filter dimentions
-            nn.AvgPool2d(( 134, 1 ))
-    )
-
-    model_W[0].weight = nn.Parameter( weights ) 
-    y = model_W( tensor )
+    filtered_img = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))      #( 1 -> grey scale input, 1 -> grey scale output, arr_dim -> filter dimentions ) 
+    
+    filtered_img.weight = nn.Parameter( weights ) 
+    
+    y = filtered_img( tensor )
     view_img( y )
-
-
-
-#    print( f"y.shape = {y.shape}" )
-#    y = normalize( y )    
-#    view_img( y )
-'''
-     #tensor as numpy 2d array
-    y = y.detach()
-    ny = y.numpy()
-    y2d = ny[0][0]
-    print( y2d )
-#    return y2d     #return 2d np_array
-'''
-
+#    avg_img = nn.AvgPool2d(( 1, 40 ))
+    
 
 
 np_array = detectImminentThreat( tensor_cactus, weights_vertical, arr_dim )
