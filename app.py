@@ -30,15 +30,25 @@ weights_vertical =  weightsCreator( arr_dim )
 
 
 #MODEL
-def detectImminentThreat( tensor, weights, arr_dim ):     #arr_dim => filter dimentions
+def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter dimentions
     
-    filtered_img = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))      #( 1 -> grey scale input, 1 -> grey scale output, arr_dim -> filter dimentions ) 
+    ##convolution the image 
+    filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))      #( 1 -> grey scale input, 1 -> grey scale output, arr_dim -> filter dimentions ) 
     
-    filtered_img.weight = nn.Parameter( weights ) 
+    filteredImg.weight = nn.Parameter( weights )              #use predefined filter names "weights_vertical" in this case
+
+    y_filtered = filteredImg( tensor )                        # >>> y 
+    y_shape = y_filtered.shape                                # >>> torch.Size([1, 1, 134, 40]) 
+
+    ##average pooling convolution
+    avgImg = nn.AvgPool2d(( 1, y_shape[3] ))
     
-    y = filtered_img( tensor )
-    view_img( y )
-#    avg_img = nn.AvgPool2d(( 1, 40 ))
+    y_avg = avgImg( y_filtered ) 
+
+    ##
+    y = y_filtered.detach()
+    print( y )
+#    view_img( y_avg )
     
 
 
