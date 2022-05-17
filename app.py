@@ -66,7 +66,7 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
     print(y1d[0])
 
     for i in y2d[0]:
-        if i >= y1d[0]:
+        if i <= y1d[0]:
             print(i)
             break
 
