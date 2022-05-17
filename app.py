@@ -45,9 +45,32 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
     
     y_avg = avgImg( y_filtered ) 
 
+    ##all tensors to numpy array
+    y_arr2d = y_filtered.detach()
+    ny = y_arr2d.numpy()
+    y2d = ny[0][0]
+#    print( y2d )
+#    print("*********")
+    print( y2d[0] )
+
+
     ##
-    y = y_filtered.detach()
-    print( y )
+    print("+++++++++++++++++++++")
+    y_arr1d = y_avg.detach()
+    ny = y_arr1d.numpy()
+    y1d = ny[0][0]
+    print(y1d.transpose())
+    print("++++++")
+    print(y1d)
+    print("*****")
+    print(y1d[0])
+
+    for i in y2d[0]:
+        if i >= y1d[0]:
+            print(i)
+            break
+
+
 #    view_img( y_avg )
     
 
