@@ -38,41 +38,17 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
     filteredImg.weight = nn.Parameter( weights )              #use predefined filter names "weights_vertical" in this case
 
     y_filtered = filteredImg( tensor )                        # >>> y 
+
     y_shape = y_filtered.shape                                # >>> torch.Size([1, 1, 134, 40]) 
 
     ##average pooling convolution
-    avgImg = nn.AvgPool2d(( 1, y_shape[3] ))
+    maxImg = nn.MaxPool2d(( 1, y_shape[3] ))
     
-    y_avg = avgImg( y_filtered ) 
+    y_max = maxImg( y_filtered ).detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
+    Y_mean = np.mean( y_max )
 
-    ##all tensors to numpy array
-    y_arr2d = y_filtered.detach()
-    ny = y_arr2d.numpy()
-    y2d = ny[0][0]
-#    print( y2d )
-#    print("*********")
-    print( y2d[0] )
+    upper_limit = np.where( y_max > Y_mean )[0][0]
 
-
-    ##
-    print("+++++++++++++++++++++")
-    y_arr1d = y_avg.detach()
-    ny = y_arr1d.numpy()
-    y1d = ny[0][0]
-    print(y1d.transpose())
-    print("++++++")
-    print(y1d)
-    print("*****")
-    print(y1d[0])
-
-    for i in y2d[0]:
-        if i <= y1d[0]:
-            print(i)
-            break
-
-
-#    view_img( y_avg )
+    print( upper_limit )
     
-
-
 np_array = detectImminentThreat( tensor_cactus, weights_vertical, arr_dim )
