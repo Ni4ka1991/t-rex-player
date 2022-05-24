@@ -36,11 +36,19 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
     filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))      #( 1 -> grey scale input, 1 -> grey scale output, arr_dim -> filter dimentions ) 
     
     filteredImg.weight = nn.Parameter( weights )              #use predefined filter names "weights_vertical" in this case
-
+    
     y_filtered = filteredImg( tensor )                        # >>> y 
 
     y_shape = y_filtered.shape                                # >>> torch.Size([1, 1, 134, 40]) 
+    print( y_shape )
 
+    y_filtered_prm = torch.permute( y_filtered, (0, 1, 3, 2))
+    y_shape = y_filtered_prm.shape                                # >>> torch.Size([1, 1, 40, 134]) 
+    print( y_shape )
+    '''
+    print( f"y_filtered.shape >>> {y_filtered.shape}" )
+    print( f"y_filtered_tr.shape >>> {y_filtered_tr.shape}" )
+    
     ##average pooling convolution
     maxImg = nn.MaxPool2d(( 1, y_shape[3] ))
     
@@ -50,5 +58,19 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
     upper_limit = np.where( y_max > Y_mean )[0][0]
 
     print( upper_limit )
-    
+    '''
 np_array = detectImminentThreat( tensor_cactus, weights_vertical, arr_dim )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
