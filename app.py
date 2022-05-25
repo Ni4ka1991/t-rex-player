@@ -59,6 +59,7 @@ def detectImminentThreat( tensor, weights, arr_dim ):         #arr_dim => filter
 
     print( upper_limit )
     '''
+
 np_array = detectImminentThreat( tensor_cactus, weights_vertical, arr_dim )
 
 
