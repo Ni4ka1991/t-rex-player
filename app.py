@@ -46,18 +46,51 @@ class detectImminentThreat():
     def getCoordinates( self, y ):
         
         shape = y.shape
-        
+
         ##average pooling convolution
-        maxImg = nn.MaxPool2d(( 1, shape ))
+        maxImg = nn.MaxPool2d(( 1, shape[3] ))
         y_max = maxImg( y ).detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
         Y_mean = np.mean( y_max )
         upper_limit = np.where( y_max > Y_mean )[0][0]
         
         return upper_limit
-    
+        
 
 
 
 dit = detectImminentThreat()
 y = dit.getFilteredImg( arr_dim, weights_vertical, tensor_cactus )
-print( dit.getCoordinates( y ))
+vert_limit = dit.getCoordinates( y )
+print( f"The vertical border has coordinates: {vert_limit}" )
+y_prm = torch.permute( y, ( 0, 1, 3, 2 ))
+hor_limit = dit.getCoordinates( y_prm )
+print( f"The left horisontal border has coordinates: {hor_limit}" )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
