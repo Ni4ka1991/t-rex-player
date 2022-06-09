@@ -10,23 +10,32 @@ from detect import *
 from os import system
 
 system( "clear" )
-arr_dim = 25
-
 
 #LOAD IMAGE AS TENSOR
 tensor_cactus  = loadImageAsTensor( "images/mid-3.jpg" )
 weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
-
-#CREATE OUN CONVOLUTION NEURON
-weights_vertical =  weightsCreator( arr_dim )
-
 
 
 #class initialization 
 ds = detectSomething()
 
 
-#detecting
+#DETECTING
+
+##detect t-rex
+arr_dim = 43
+t_rex_pos = ds.getFilteredImg( arr_dim, XXX, XXX )
+
+
+
+
+
+
+## detect imminent threat
+arr_dim = 25
+
+###use oun convolution neuron
+weights_vertical =  weightsCreator( arr_dim )
 
 y = ds.getFilteredImg( arr_dim, weights_vertical, tensor_cactus )
 vert_limit = ds.getCoordinates( y )
