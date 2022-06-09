@@ -11,9 +11,13 @@ from os import system
 
 system( "clear" )
 
-#LOAD IMAGE AS TENSOR
-tensor_cactus  = loadImageAsTensor( "images/mid-3.jpg" )
-weights_cactus = loadImageAsTensor( "images/cactus-weights.jpg" )
+#SEARCING DATA
+## where are we loking for 
+tensor_cactus  = loadImageAsTensor( "images/cacti/mid-3.jpg" )
+tensor_t_rex   = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
+## what are we loking for
+weights_t_rex  = loadImageAsTensor( "images/masks/t-rex-weights.jpg" )
+weights_cactus = loadImageAsTensor( "images/masks/cactus-weights.jpg" )
 
 
 #class initialization 
@@ -23,9 +27,10 @@ ds = detectSomething()
 #DETECTING
 
 ##detect t-rex
-arr_dim = 43
-t_rex_pos = ds.getFilteredImg( arr_dim, XXX, XXX )
-
+arr_dim = weights_t_rex.shape[3]
+t_rex_pos = ds.getFilteredImg( arr_dim, weights_t_rex, tensor_t_rex )
+print(t_rex_pos)
+'''
 
 
 
@@ -45,7 +50,7 @@ print( f"The vertical border has coordinates: {vert_limit}" )
 y_prm = torch.permute( y, ( 0, 1, 3, 2 ))
 hor_limit = ds.getCoordinates( y_prm )
 print( f"The left horisontal border has coordinates: {hor_limit}" )
-
+'''
 
 
 
