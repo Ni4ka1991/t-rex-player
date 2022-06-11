@@ -14,20 +14,21 @@ import numpy as np
 class detectSomething():
 
     
-    def getMaxpooledImg( self, arr_dim, weights, tensor, "maxpool_axis" ):
-         
-         model = nn.Sequential(
+    def getMaxpooledImg( self, arr_dim, weights, tensor, maxpool_axis ):
+
+        model = nn.Sequential(
                 nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),
-                nn.MaxPool2d(( a, b )),
+                nn.MaxPool2d(( 1, 6 )),
         )
         
         model[0].weight = nn.Parameter( weights ) 
         
-        if "maxpool_axis" == "v":
-            a = 1 and b = shape[3]
-        elif "maxpool_axis" == "h":
-            a = shape[3] and b = 1
-        
+        if maxpool_axis == "v":
+            print("Hi, my friends!!")
+#            a = 1 and b = shape[3]
+        elif maxpool_axis == "h":
+#            a = shape[3] and b = 1
+            print("I'm so busy!")
         y = model( tensor )
         return y
     

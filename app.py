@@ -28,13 +28,18 @@ ds = detectSomething()
 
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
-t_rex_pos = ds.getFilteredImg( arr_dim, weights_t_rex, tensor_t_rex )
-print(t_rex_pos)
+t_rex_pos = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
+
+
+
+
+
+
+
+
+
+
 '''
-
-
-
-
 
 ## detect imminent threat
 arr_dim = 25
