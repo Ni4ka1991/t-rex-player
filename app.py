@@ -28,24 +28,7 @@ ds = detectSomething()
 
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
-<<<<<<< HEAD
-t_rex_filt = ds.getFilteredImg( arr_dim, weights_t_rex, tensor_t_rex )
-t_rex_pos = ds.getCoordinates( t_rex_filt )
-
-
-
-'''
-=======
-t_rex_pos = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
-
-
-
->>>>>>> 41e6e4e0f639d47534fd8d34cbd5b63f59edf17b
-
-
-
-
-
+t_rex_pos = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex )
 
 
 '''
