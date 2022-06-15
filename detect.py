@@ -27,13 +27,17 @@ class detectSomething():
     def getCoordinates( self, y ):
         
         shape = y.shape
-
-        ##average pooling convolution
+        
+        ##pooling convolution
         maxImg = nn.MaxPool2d(( 1, shape[3] ))
-        y_max = maxImg( y ).detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
+
+        
+        y_max = maxImg( y ).detach().numpy()[0][0].squeeze()  # >>>get one-dimensional numpy array of max values in each row of filtered photo
+        print( y_max.shape )
+        '''
         Y_mean = np.mean( y_max )
         upper_limit = np.where( y_max > Y_mean )[0][0]
         
         return upper_limit
-        
+        '''
 
