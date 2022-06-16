@@ -30,7 +30,7 @@ class detectSomething():
             b = 1
             a = shape[3]
 
-        maxpoolingImg = nn.MaxPool2d(( a, b )),
+        maxpoolingImg = nn.MaxPool2d(( a, b ))
         
         y_max = maxpoolingImg( y_filtered )        
         
