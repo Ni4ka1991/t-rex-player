@@ -14,40 +14,30 @@ import numpy as np
 class detectSomething():
 
     
-    def getMaxpooledImg( self, arr_dim, weights, tensor ):
-
-        model = nn.Sequential(
-                nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),
-                nn.MaxPool2d(( 1, 6 )),
-        )
+    def getMaxpooledImg( self, arr_dim, weights, tensor, maxpool_axis ):
         
-        model[0].weight = nn.Parameter( weights )
-#        model[1].kernel_size = nn.Parameter( 1, 6 )
-        
+        filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
+        filteredImg.weight = nn.Parameter( weights )
+        y_filtered = filteredImg( tensor )
 
+        shape = y_filtered.shape
 
-        print( f"print(model) >>> \n {model}" )
-        print( "*"*12 )
-        print( f"print(model[0]) >>> \n {model[0]}" )
-        print( "*"*12 )
-        print( f"print(model[1]) >>> \n {model[1]}" )
-        print( "*"*12 )
-        print( f"print(model[0].weight ) >>> \n {model[0].weight}" )
-        
-        print( "*"*12 )
-        print( f"parameters MaxPool2d >>> \n{list(model[1].parameters())}" )
-        print( "*"*12 )
-        print(list(model[0].parameters()))
-        '''        
+        ###select maxpooling axis
         if maxpool_axis == "v":
-            print("Hi, my friends!!")
-#            a = 1 and b = shape[3]
+            a = 1
+            b = shape[3]
         elif maxpool_axis == "h":
-#            a = shape[3] and b = 1
-            print("I'm so busy!")
-        y = model( tensor )
-        return y
-    
+            b = 1
+            a = shape[3]
+
+        maxpoolingImg = nn.MaxPool2d(( a, b )),
+        
+        y_max = maxpoolingImg( y_filtered )        
+        
+        return y_max
+
+
+        '''        
     def getCoordinates( self, y ):
         
         

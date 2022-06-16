@@ -28,8 +28,8 @@ ds = detectSomething()
 
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
-t_rex_pos = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex )
-
+t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
+print( t_rex_max )
 
 '''
 
