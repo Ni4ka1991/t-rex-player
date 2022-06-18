@@ -16,10 +16,11 @@ class detectSomething():
     
     def getMaxpooledImg( self, arr_dim, weights, tensor ):
 
-        model = nn.Sequential(
-                nn.Conv2d( 1, 1, ( arr_dim, arr_dim )),
-                nn.MaxPool2d(( 1, 6 )),
-        )
+        nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
+        
+
+
+        nn.MaxPool2d(( 1, 6 )),
         
         model[0].weight = nn.Parameter( weights )
 #        model[1].kernel_size = nn.Parameter( 1, 6 )
