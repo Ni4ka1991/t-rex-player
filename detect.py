@@ -37,14 +37,11 @@ class detectSomething():
         return y_max
 
 
-        '''        
+                
     def getCoordinates( self, y ):
-        
-        
-
-        y_max = maxImg( y ).detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
-        Y_mean = np.mean( y_max )
-        upper_limit = np.where( y_max > Y_mean )[0][0]
+        y_np_arr = y.detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
+        y_mean = np.mean( y_np_arr )
+        upper_limit = np.where( y_np_arr > y_mean )[0][0]
         
         return upper_limit
-        '''
+
