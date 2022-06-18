@@ -13,49 +13,34 @@ import numpy as np
 
 class detectSomething():
 
-    
-    def getMaxpooledImg( self, arr_dim, weights, tensor ):
-
-        nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
+    def getMaxpooledImg( self, arr_dim, weights, tensor, maxpool_axis ):
         
+        filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
+        filteredImg.weight = nn.Parameter( weights )
+        y_filtered = filteredImg( tensor )
 
+        shape = y_filtered.shape
 
-        nn.MaxPool2d(( 1, 6 )),
-        
-        model[0].weight = nn.Parameter( weights )
-#        model[1].kernel_size = nn.Parameter( 1, 6 )
-        
-
-
-        print( f"print(model) >>> \n {model}" )
-        print( "*"*12 )
-        print( f"print(model[0]) >>> \n {model[0]}" )
-        print( "*"*12 )
-        print( f"print(model[1]) >>> \n {model[1]}" )
-        print( "*"*12 )
-        print( f"print(model[0].weight ) >>> \n {model[0].weight}" )
-        
-        print( "*"*12 )
-        print( f"parameters MaxPool2d >>> \n{list(model[1].parameters())}" )
-        print( "*"*12 )
-        print(list(model[0].parameters()))
-        '''        
+        ###select maxpooling axis
         if maxpool_axis == "v":
-            print("Hi, my friends!!")
-#            a = 1 and b = shape[3]
+            a = 1
+            b = shape[3]
         elif maxpool_axis == "h":
-#            a = shape[3] and b = 1
-            print("I'm so busy!")
-        y = model( tensor )
-        return y
-    
-    def getCoordinates( self, y ):
-        
-        
+            b = 1
+            a = shape[3]
 
-        y_max = maxImg( y ).detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
-        Y_mean = np.mean( y_max )
-        upper_limit = np.where( y_max > Y_mean )[0][0]
+        maxpoolingImg = nn.MaxPool2d(( a, b ))
+        
+        y_max = maxpoolingImg( y_filtered )        
+        
+        return y_max
+
+
+                
+    def getCoordinates( self, y ):
+        y_np_arr = y.detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
+        y_mean = np.mean( y_np_arr )
+        upper_limit = np.where( y_np_arr > y_mean )[0][0]
         
         return upper_limit
-        '''
+

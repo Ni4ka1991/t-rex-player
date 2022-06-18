@@ -18,6 +18,7 @@ def view_img( img ):
     img_sqz = img.squeeze(0)
     plt.figure()
     plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
+    plt.title( "Image view >>>" )
     plt.show()
 
 def loadImageAsTensor( path ):
@@ -26,25 +27,6 @@ def loadImageAsTensor( path ):
     ).unsqueeze_(0)
     return tensor
 
-
-def searchBorders( np_array ):
-    print( np_array.shape ) # ( 113, 19 )
-    tr_array = np_array.transpose()
-    print( tr_array )
-    print( tr_array.shape ) # ( 19, 113 )
-    shape = tr_array.shape
-
-
-'''
-    for i in range( 0, shape[0] ):
-        mean_str = numpy.mean( tr_array[i] )
-        print( f"mean in str {i} >>> {mean_str}" )    
-'''
-
-    #1. np_array.shape
-    #2. search column borders
-    #3. search row borders
-    #4. intersection points
 
 def weightsCreator( n ):
     ##create an 2d array x*x
