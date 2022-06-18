@@ -18,9 +18,7 @@ class detectSomething():
         filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
         filteredImg.weight = nn.Parameter( weights )
         y_filtered = filteredImg( tensor )
-        view_img( y_filtered )
         shape = y_filtered.shape
-        print( f"SHAPE >>> {shape}" )
 
         ###select maxpooling axis
         if maxpool_axis == "v":
@@ -31,7 +29,6 @@ class detectSomething():
             a = shape[2]
 
         maxpoolingImg = nn.MaxPool2d(( a, b ))
-        
         y_max = maxpoolingImg( y_filtered )        
         
         return y_max
