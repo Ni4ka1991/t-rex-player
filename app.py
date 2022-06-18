@@ -15,7 +15,7 @@ system( "clear" )
 ## where are we loking for 
 tensor_cactus     = loadImageAsTensor( "images/cacti/mid-3.jpg" )
 tensor_t_rex      = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
-tensor_distance   = loadImageAsTensor( "images/distance/far-1.jpg" )
+tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
 view_img( tensor_distance )
 
 ## what are we loking for
