@@ -29,13 +29,20 @@ ds = detectSomething()
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
 t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
-print( t_rex_max )
-
-'''
+t_rex_pos = torch.argmax( t_rex_max )
+print( f"t_rex_position >>> {t_rex_pos}" )
 
 ## detect imminent threat
-arr_dim = 25
+arr_dim = 25                                               
+cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_cactus, "v" )
+input( "Hit enter to continue ..." )
+print( cactus_max )
 
+
+
+
+
+'''
 ###use oun convolution neuron
 weights_vertical =  weightsCreator( arr_dim )
 
