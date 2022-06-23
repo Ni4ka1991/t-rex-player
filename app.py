@@ -29,6 +29,7 @@ ds = detectSomething()
 
 #DETECTING
 
+'''
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
 t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
@@ -41,12 +42,17 @@ arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_cactus, "v" )
 cactus_v_border = ds.getCoordinates( cactus_max )
 print( f"Imminent threat height. >>> {cactus_v_border}" )
-
+'''
 ## detect dictance to cactus
 arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )
-cactus_pos = torch.argmax( cactus_max )
-print( f"Distance to imminent threat >>> {cactus_pos}" )
+cacti_detect = ds.getCoordinates( cactus_max )
+
+#plt.plot( cacti_detect, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+#plt.show()
+#print( cacti_detect )
+#cactus_pos = torch.argmax( cactus_max )
+#print( f"Distance to imminent threat >>> {cactus_pos}" )
 
 
 

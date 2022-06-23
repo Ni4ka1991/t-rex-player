@@ -30,15 +30,17 @@ class detectSomething():
 
         maxpoolingImg = nn.MaxPool2d(( a, b ))
         y_max = maxpoolingImg( y_filtered )        
-        
+                
         return y_max
 
 
                 
     def getCoordinates( self, y ):
         y_np_arr = y.detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
-        y_mean = np.mean( y_np_arr )
-        upper_limit = np.where( y_np_arr > y_mean )[0][0]
-        
-        return upper_limit
+#        plt.plot( y_np_arr, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+#        plt.show()
+#        y_mean = np.mean( y_np_arr )
+#        upper_limit = np.where( y_np_arr > y_mean )[0][0]
+        return y_np_arr        
+#        return upper_limit
 
