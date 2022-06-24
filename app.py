@@ -15,8 +15,8 @@ system( "clear" )
 ## where are we loking for 
 tensor_cactus     = loadImageAsTensor( "images/cacti/mid-3.jpg" )
 tensor_t_rex      = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
-tensor_distance   = loadImageAsTensor( "images/distance/far-1.jpg" )
-view_img( tensor_distance )
+tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
+#view_img( tensor_distance )
 
 ## what are we loking for
 weights_t_rex  = loadImageAsTensor( "images/masks/t-rex-weights.jpg" )
@@ -48,9 +48,7 @@ arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )
 cacti_detect = ds.getCoordinates( cactus_max )
 
-#plt.plot( cacti_detect, color = "green", linestyle="solid", linewidth = 1, marker = "x")
-#plt.show()
-#print( cacti_detect )
+viewData( cacti_detect, "Two imminent threat on image" )
 #cactus_pos = torch.argmax( cactus_max )
 #print( f"Distance to imminent threat >>> {cactus_pos}" )
 

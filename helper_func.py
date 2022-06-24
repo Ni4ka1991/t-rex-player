@@ -48,10 +48,14 @@ def weightsCreator( n ):
                         
     return torch_arr
 
+def getNumpyArray( tensor ):
+    return tensor.detach().numpy()[0][0].squeeze()  # >>> one-dimensional numpy array of max values in each row of filtered photo
 
 
-
-
+def viewData( data, title ):
+    plt.plot( data, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+    plt.title( title )
+    plt.show()
 
 
 
