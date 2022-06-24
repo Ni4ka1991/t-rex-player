@@ -36,9 +36,10 @@ class detectSomething():
 
                 
     def getCoordinates( self, y ):
-        y_np_arr = getNumpyArray( y )
-#        y_mean = np.mean( y_np_arr )
-#        upper_limit = np.where( y_np_arr > y_mean )[0][0]
-        return y_np_arr        
-#        return upper_limit
+        y_np_arr = getDataArray( y )
+        y_mean = np.mean( y_np_arr )
+        upper_limit = np.where( y_np_arr > y_mean )[0][0]
+        print( f"upper_limit >>> {upper_limit}" )
+#        return y_np_arr        
+        return upper_limit
 
