@@ -17,6 +17,7 @@ system( "clear" )
 tensor_cactus     = loadImageAsTensor( "images/cacti/mid-3.jpg" )
 tensor_t_rex      = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
+#tensor_distance   = loadImageAsTensor( "images/distance/center-1.jpg" )
 #view_img( tensor_distance )
 
 ## what are we loking for
@@ -37,12 +38,12 @@ t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
 t_rex_pos = torch.argmax( t_rex_max )
 print( f"t_rex_position >>> {t_rex_pos}" )
 
-'''
 ## detect imminent threat
 arr_dim = weights_cactus.shape[3]                                               
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_cactus, "v" )
 cactus_v_border = ds.getCoordinates( cactus_max )
 print( f"Imminent threat height. >>> {cactus_v_border}" )
+'''
 
 ## detect dictance to cactus
 arr_dim = weights_cactus.shape[3]

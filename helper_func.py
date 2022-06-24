@@ -53,8 +53,13 @@ def getDataArray( tensor ):
     return arr
 
 
-def viewData( data, title ):
-    plt.plot( data, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+def viewData( data_1, data_2, title ):
+    plt.plot( data_1, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+    data = []
+    for i in range( 0, len(data_1)):
+        data.append(data_2)
+
+    plt.plot( data, color = "red",   linestyle="dashdot", linewidth = 2)
     plt.title( title )
     plt.show()
 
