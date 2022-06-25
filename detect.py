@@ -40,7 +40,7 @@ class detectSomething():
         y_mean = np.mean( y_np_arr )
         print( f"y_mean >>> {y_mean}" )
         print( y_np_arr )
-        viewData( y_np_arr, y_mean, "data visualization" )
+#        viewData( y_np_arr, y_mean, "data visualization" )
 #        print( np.where( y_np_arr > y_mean ))
         upper_limit = np.where( y_np_arr > y_mean )[0][0]
 #        print( f"upper_limit >>> {upper_limit}" )
