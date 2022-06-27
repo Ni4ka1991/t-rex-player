@@ -19,12 +19,17 @@ class detectSomething():
         filteredImg.weight = nn.Parameter( weights )
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
+        print(f"shape >>> {shape}" )
 
         ###select maxpooling axis
         if maxpool_axis == "v":
             pass
         elif maxpool_axis == "h":
-            y_filtered.permute( 0, 1, 3, 2 )
+            print( "Hi!!!" )
+            y_filtered = y_filtered.permute( 0, 1, 3, 2 )
+            shape = y_filtered.shape
+            print(f"shape >>> {shape}" )
+
 
         maxpoolingImg = nn.MaxPool2d(( 1, shape[3] ))
         y_max = maxpoolingImg( y_filtered )        

@@ -7,7 +7,7 @@ from torch import nn
 #OTHER
 import numpy as np
 from helper_func import *
-from detect import *
+from detect2 import *
 from os import system
 
 system( "clear" )
@@ -16,8 +16,8 @@ system( "clear" )
 ## where are we loking for 
 tensor_cactus     = loadImageAsTensor( "images/cacti/mid-3.jpg" )
 tensor_t_rex      = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
-tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
-#tensor_distance   = loadImageAsTensor( "images/distance/center-1.jpg" )
+#tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
+tensor_distance   = loadImageAsTensor( "images/distance/center-1.jpg" )
 #view_img( tensor_distance )
 
 ## what are we loking for
