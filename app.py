@@ -14,10 +14,11 @@ system( "clear" )
 
 #SEARCING DATA
 ## where are we loking for 
-tensor_cactus     = loadImageAsTensor( "images/cacti/mid-3.jpg" )
-tensor_t_rex      = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
+tensor_cactus      = loadImageAsTensor( "images/cacti/mid-3.jpg" )
+tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 #tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
-tensor_distance   = loadImageAsTensor( "images/distance/center-1.jpg" )
+tensor_distance    = loadImageAsTensor( "images/distance/center-1.jpg" )
+tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
 #view_img( tensor_distance )
 
 ## what are we loking for
@@ -48,4 +49,19 @@ arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )
 cactus_first_threat = ds.getCoordinates( cactus_max )
 print( f"Position of first threat >>> {cactus_first_threat}" )
+
+## detect status game
+
+
+
+
+
+
+
+
+
+
+
+
+
 
