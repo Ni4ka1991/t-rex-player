@@ -31,7 +31,6 @@ ds = detectSomething()
 
 #DETECTING
 
-'''
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
 t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
@@ -43,7 +42,6 @@ arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_cactus, "v" )
 cactus_v_border = ds.getCoordinates( cactus_max )
 print( f"Imminent threat height. >>> {cactus_v_border}" )
-'''
 
 ## detect dictance to cactus
 arr_dim = weights_cactus.shape[3]

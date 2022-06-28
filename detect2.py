@@ -19,16 +19,13 @@ class detectSomething():
         filteredImg.weight = nn.Parameter( weights )
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
-        print(f"shape >>> {shape}" )
 
         ###select maxpooling axis
         if maxpool_axis == "v":
             pass
         elif maxpool_axis == "h":
-            print( "Hi!!!" )
             y_filtered = y_filtered.permute( 0, 1, 3, 2 )
             shape = y_filtered.shape
-            print(f"shape >>> {shape}" )
 
 
         maxpoolingImg = nn.MaxPool2d(( 1, shape[3] ))
@@ -41,8 +38,6 @@ class detectSomething():
     def getCoordinates( self, y ):
         y_np_arr = getDataArray( y )
         y_mean = np.mean( y_np_arr )
-        print( f"y_mean >>> {y_mean}" )
-        print( y_np_arr )
 #        viewData( y_np_arr, y_mean, "data visualization" )
 #        print( np.where( y_np_arr > y_mean ))
         upper_limit = np.where( y_np_arr > y_mean )[0][0]
