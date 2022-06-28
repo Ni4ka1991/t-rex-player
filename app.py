@@ -24,6 +24,7 @@ tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
 ## what are we loking for
 weights_t_rex  = loadImageAsTensor( "images/masks/t-rex-weights.jpg" )
 weights_cactus = loadImageAsTensor( "images/masks/cactus-weights.jpg" )
+weights_go     = loadImageAsTensor( "images/masks/go.jpg" )
 
 
 #class initialization 
@@ -51,6 +52,7 @@ cactus_first_threat = ds.getCoordinates( cactus_max )
 print( f"Position of first threat >>> {cactus_first_threat}" )
 
 ## detect status game
+arr_dim = weights_go.shape[3]
 
 
 
