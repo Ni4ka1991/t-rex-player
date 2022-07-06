@@ -14,7 +14,7 @@ import numpy as np
 from os import system
 
 
-def view_img( img ):
+def viewImg( img ):
     img_sqz = img.squeeze(0)
     plt.figure()
     plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )

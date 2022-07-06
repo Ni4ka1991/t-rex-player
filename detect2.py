@@ -19,6 +19,7 @@ class detectSomething():
         filteredImg.weight = nn.Parameter( weights )
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
+        viewImg( y_filtered )
 
         ###select maxpooling axis
         if maxpool_axis == "v":
