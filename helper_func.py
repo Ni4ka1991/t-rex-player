@@ -55,7 +55,10 @@ def getDataArray( tensor ):
 
 def viewData( data_1, data_2, title ):
     plt.plot( data_1, color = "green", linestyle="solid", linewidth = 1, marker = "x")
+    
+    ###a line viewer
     data = []
+    ###loop to view a full lenght line 
     for i in range( 0, len(data_1)):
         data.append(data_2)
 

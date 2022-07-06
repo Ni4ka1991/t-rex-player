@@ -38,10 +38,11 @@ class detectSomething():
     def getCoordinates( self, y ):
         y_np_arr = getDataArray( y )
         y_mean = np.mean( y_np_arr )
+        y_max = np.max( y_np_arr )
 #        viewData( y_np_arr, y_mean, "data visualization" )
 #        print( np.where( y_np_arr > y_mean ))
-        upper_limit = np.where( y_np_arr > y_mean )[0][0]
-#        print( f"upper_limit >>> {upper_limit}" )
+        detect_limit = ( y_mean + y_max ) / 2
+        upper_limit = np.where( y_np_arr > detect_limit )[0][0]
 #        return y_np_arr        
         return upper_limit
 
