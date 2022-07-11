@@ -54,8 +54,19 @@ cactus_first_threat = ds.getCoordinates( cactus_max )
 print( f"Position of first threat >>> {cactus_first_threat}" )
 '''
 ## detect status game
-filteredImg = nn.Conv2d( 1, 1, ( 22, 200 ))
-#filteredImg.weight = nn.Parameter( weights_go )
+'''
+mask = torch.tensor([[[[ 0., 1., 0. ],
+                       [ 0., 1., 0. ],
+                       [ 0., 1., 0. ]]]])
+'''
+mask = torch.tensor([[[[ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
+                       [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
+                       [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ]]]])
+
+
+
+filteredImg = nn.Conv2d( 1, 1, 3 )
+filteredImg.weight = nn.Parameter( mask )
 y_filtered = filteredImg( tensor_go )
 viewImg( y_filtered )
 
