@@ -20,6 +20,8 @@ tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 #tensor_distance    = loadImageAsTensor( "images/distance/center-1.jpg" )
 tensor_distance   = loadImageAsTensor( "images/distance/none-N.jpg" )
 tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
+#print( tensor_go )
+#print( tensor_go.shape )
 #tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
 #viewImg( tensor_distance )
 
@@ -58,7 +60,7 @@ print( f"Position of first threat >>> {cactus_first_threat}" )
 mask = torch.tensor([[[[ 0., 1., 0. ],
                        [ 0., 1., 0. ],
                        [ 0., 1., 0. ]]]])
-'''
+
 mask = torch.tensor([[[[ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
                        [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
                        [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ]]]])
@@ -69,8 +71,8 @@ filteredImg = nn.Conv2d( 1, 1, 3 )
 filteredImg.weight = nn.Parameter( mask )
 y_filtered = filteredImg( tensor_go )
 viewImg( y_filtered )
-
-
+'''
+my_weights = weightsCreator( 22, 200 )
 
 
 
