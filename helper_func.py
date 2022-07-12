@@ -40,7 +40,8 @@ def weightsCreator( row, col ):#22*200
             
     ##numpy to torch.tensor
     torch_arr = torch.tensor( arr )
-                        
+#    print(torch_arr.type)                    
+#    input("hit enter to continue ...")
     return torch_arr
 
 def getDataArray( tensor ):

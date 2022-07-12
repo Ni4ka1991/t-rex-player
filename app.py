@@ -19,7 +19,8 @@ tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 #tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
 #tensor_distance    = loadImageAsTensor( "images/distance/center-1.jpg" )
 tensor_distance   = loadImageAsTensor( "images/distance/none-N.jpg" )
-tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
+tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
+#tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
 #print( tensor_go )
 #print( tensor_go.shape )
 #tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
@@ -56,8 +57,14 @@ cactus_first_threat = ds.getCoordinates( cactus_max )
 print( f"Position of first threat >>> {cactus_first_threat}" )
 '''
 ## detect status game
+
+mask = weightsCreator( 22, 200 )
+go_max = ds.getMaxpooledImg( mask, weights_go, tensor_go, "v" )
+go_diagramma = ds.getCoordinates( go_max )
+#mask = weightsCreator( 200, 22 )
 '''
 mask = torch.tensor([[[[ 0., 1., 0. ],
+
                        [ 0., 1., 0. ],
                        [ 0., 1., 0. ]]]])
 
@@ -65,20 +72,7 @@ mask = torch.tensor([[[[ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
                        [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
                        [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ]]]])
 
-
-
-filteredImg = nn.Conv2d( 1, 1, 3 )
-filteredImg.weight = nn.Parameter( mask )
-y_filtered = filteredImg( tensor_go )
-viewImg( y_filtered )
 '''
-my_weights = weightsCreator( 22, 200 )
-
-
-
-
-
-
 
 
 
