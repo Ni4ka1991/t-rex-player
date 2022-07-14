@@ -55,7 +55,7 @@ arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )
 cactus_first_threat = ds.getCoordinates( cactus_max )
 print( f"Position of first threat >>> {cactus_first_threat}" )
-'''
+
 ## detect status game
 
 mask = weightsCreator( 22, 200 )
@@ -63,17 +63,25 @@ go_max = ds.getMaxpooledImg( mask, weights_go, tensor_go, "v" )
 go_diagramma = ds.getCoordinates( go_max )
 #mask = weightsCreator( 200, 22 )
 '''
-mask = torch.tensor([[[[ 0., 1., 0. ],
+mask = torch.tensor([[[[ 0., 1., 2. ],
 
-                       [ 0., 1., 0. ],
-                       [ 0., 1., 0. ]]]])
+                       [ 3., 4., 5. ],
+                       [ 6., 7., 8. ]]]])
 
-mask = torch.tensor([[[[ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
-                       [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ],
-                       [ 0., 1., 0., 0., 1., 0., 1., 0., 1., 0. ]]]])
+tensor = torch.tensor([[[[ 11., 12., 13., 14., 15., 16., 17., 18., 19., 20. ],
+                         [ 21., 22., 23., 24., 25., 26., 27., 28., 29., 30. ],
+                         [ 31., 32., 33., 34., 35., 36., 37., 38., 39., 40. ]]]])
 
-'''
 
+print( "mask >>>" )
+print( mask )
+print( "tensor >>>" )
+print( tensor )
+getConvTensor = nn.Conv2d( 1, 1, 2 )
+getConvTensor.weight = nn.Parameter( mask )
+my_tensor = getConvTensor( tensor )
+print( "my tensor >>>" )
+print(my_tensor)
 
 
 
