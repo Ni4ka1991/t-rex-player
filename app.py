@@ -63,10 +63,10 @@ go_max = ds.getMaxpooledImg( mask, weights_go, tensor_go, "v" )
 go_diagramma = ds.getCoordinates( go_max )
 #mask = weightsCreator( 200, 22 )
 '''
-mask = torch.tensor([[[[ 0., 1., 2. ],
+mask = torch.tensor([[[[ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.,  10 ],
 
-                       [ 3., 4., 5. ],
-                       [ 6., 7., 8. ]]]])
+                       [ 11., 12., 13., 14., 15., 16., 17., 18., 19., 20., 21 ],
+                       [ 22., 23., 24., 25., 26., 27., 28., 29., 30., 31., 32 ]]]])
 
 tensor = torch.tensor([[[[ 11., 12., 13., 14., 15., 16., 17., 18., 19., 20. ],
                          [ 21., 22., 23., 24., 25., 26., 27., 28., 29., 30. ],
@@ -76,6 +76,9 @@ tensor = torch.tensor([[[[ 11., 12., 13., 14., 15., 16., 17., 18., 19., 20. ],
 print( "mask >>>" )
 print( mask )
 print( "tensor >>>" )
+print( tensor )
+tensor = tensor.reshape( 1, 1, 10, 3 )
+print( "tensor reshape >>>" )
 print( tensor )
 getConvTensor = nn.Conv2d( 1, 1, 2 )
 getConvTensor.weight = nn.Parameter( mask )
