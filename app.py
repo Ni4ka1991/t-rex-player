@@ -19,8 +19,8 @@ tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 #tensor_distance   = loadImageAsTensor( "images/distance/near.jpg" )
 #tensor_distance    = loadImageAsTensor( "images/distance/center-1.jpg" )
 tensor_distance   = loadImageAsTensor( "images/distance/none-N.jpg" )
-#tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
-tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
+tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
+#tensor_go          = loadImageAsTensor( "images/GO/go-1.jpg" )
 #print( tensor_go )
 #print( tensor_go.shape )
 #tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
@@ -60,9 +60,23 @@ print( f"Position of first threat >>> {cactus_first_threat}" )
 getConvTensor = nn.Conv2d( 1, 1, ( 22, 200 ))
 getConvTensor.weight = nn.Parameter( weights_go )
 conv_result = getConvTensor( tensor_go ).detach()
-sq = torch.squeeze(conv_result)
-item = sq.item()
-print(item)
+sq = torch.squeeze( conv_result )
+item = sq.item()/100
+if item > 1.5:
+    print( "GAME OVER!!!" )
+else:
+    print( f"item >>> {item}" )
+    
 
+## detect status game
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor.weight = nn.Parameter( weights_go )
+conv_result = getConvTensor( tensor_go ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()/100
+if item > 1.5:
+    print( "GAME OVER!!!" )
+else:
+    print( f"item >>> {item}" )
 
 
