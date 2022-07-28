@@ -50,10 +50,23 @@ else:
     
 '''
 ## detect numbers
-getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
-getConvTensor.weight = nn.Parameter( weights_none )
-conv_result = getConvTensor( tensor_none ).detach()
-sq = torch.squeeze( conv_result )
-item = sq.item()*10
-print( f"tensor_0, weights_0  >>> {item}" )
-print( numbs_list )
+for i in range( 1, 16 ):
+    getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+    getConvTensor.weight = nn.Parameter( weights_list[random( 0, len(tensors_list))] )
+    conv_result = getConvTensor( tensors_list[random( 0, len(weights_list))] ).detach()
+    sq = torch.squeeze( conv_result )
+    item = sq.item()*10
+    print( f"tensor, weights  >>> {item}" )
+
+
+
+
+
+
+
+
+
+
+
+
+
