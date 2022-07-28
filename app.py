@@ -51,6 +51,28 @@ else:
 '''
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor.weight = nn.Parameter( weights_none )
+conv_result = getConvTensor( tensor_none ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()*10
+print( f"tensor_0, weights_0  >>> {item}" )
+print( numbs_list )
+'''
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor.weight = nn.Parameter( weights_3 )
+conv_result = getConvTensor( tensor_3 ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()*10
+print( f"tensor_2, weights_2  >>> {item}" )
+
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor.weight = nn.Parameter( weights_3 )
+conv_result = getConvTensor( tensor_3 ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()*10
+print( f"tensor_2, weights_2  >>> {item}" )
+
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
 getConvTensor.weight = nn.Parameter( weights_3 )
 conv_result = getConvTensor( tensor_3 ).detach()
 sq = torch.squeeze( conv_result )
@@ -58,3 +80,10 @@ item = sq.item()*10
 print( f"tensor_2, weights_2  >>> {item}" )
 
 
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor.weight = nn.Parameter( weights_3 )
+conv_result = getConvTensor( tensor_3 ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()*10
+print( f"tensor_2, weights_2  >>> {item}" )
+'''
