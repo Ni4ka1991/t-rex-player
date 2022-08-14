@@ -51,14 +51,21 @@ else:
     
 '''
 ## detect numbers
-for i in range( 1, 16 ):
+for i in range( 1, 26 ):
     getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
-    getConvTensor.weight = nn.Parameter( weights_list[random.randint( 0, len(tensors_list)-1)] )
-    conv_result = getConvTensor( tensors_list[random.randint( 0, len(weights_list)-1)] ).detach()
+    w_l = weights_list[random.randint( 0, len(weights_list)-1)]
+    getConvTensor.weight = nn.Parameter( w_l )
+    conv_result = getConvTensor( tensors_list[0] ).detach()
     sq = torch.squeeze( conv_result )
     item = sq.item()*10
-    print( f"tensor, weights  >>> {item}" )
+    print( f"tensor, weights  >>> {item} : {w_l}" )
 
+#getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+#getConvTensor.weight = nn.Parameter( weights_list[5] )
+#conv_result = getConvTensor( tensors_list[5] ).detach()
+#sq = torch.squeeze( conv_result )
+#item = sq.item()*10
+#print( f"tensor, weights  >>> {item}" )
 
 
 
