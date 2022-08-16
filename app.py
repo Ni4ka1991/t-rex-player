@@ -51,26 +51,17 @@ else:
     
 '''
 ## detect numbers
-for i in range( 1, 26 ):
-    getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
-    rand_param = random.randint( 0, len( weights_list) - 1 )
-    getConvTensor.weight = nn.Parameter( weights_list[ rand_param ])
-    rand_param = random.randint( 0, len( weights_list) - 1 )
-    conv_result = getConvTensor( tensors_list[ rand_param ] ).detach()
-    sq = torch.squeeze( conv_result )
-    item = sq.item()*10
-    print( f"tensor, weights  >>> {item}" )
-
-#getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
-#getConvTensor.weight = nn.Parameter( weights_list[5] )
-#conv_result = getConvTensor( tensors_list[5] ).detach()
-#sq = torch.squeeze( conv_result )
-#item = sq.item()*10
-#print( f"tensor, weights  >>> {item}" )
-
-
-
-
+getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+n_1 = int(input( "Enter the number_1 from the range 0...9 >>>" ))
+getConvTensor.weight = nn.Parameter( weights_list[ n_1 ])
+n_2 = int(input( "Enter the number_2 from the range 0...9 >>>" ))
+conv_result = getConvTensor( tensors_list[ n_2 ] ).detach()
+sq = torch.squeeze( conv_result )
+item = sq.item()*10
+if item <= 135:
+    print( "Numbers are different " )
+else:
+    print( "Numbers match" )
 
 
 
