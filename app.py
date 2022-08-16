@@ -19,7 +19,7 @@ ds = detectSomething()
 
 
 #DETECTING
-'''
+
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
 t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
@@ -49,7 +49,6 @@ if item > 1.5:
 else:
     print( f" <<< CONTINUE >>>" )
     
-'''
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
 n_1 = int(input( "Enter the number_1 from the range 0...9 >>>" ))
