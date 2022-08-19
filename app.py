@@ -50,7 +50,7 @@ else:
     print( f" <<< CONTINUE >>>" )
     
 ## detect numbers
-getConvTensor = nn.Conv2d( 1, 1, ( 13, 22 ))
+getConvTensor = nn.Conv2d( 1, 1, ( 11, 13 ))
 n_1 = int(input( "Enter the number_1 from the range 0...9 >>>" ))
 getConvTensor.weight = nn.Parameter( weights_list[ n_1 ])
 n_2 = int(input( "Enter the number_2 from the range 0...9 >>>" ))
