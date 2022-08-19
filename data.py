@@ -12,9 +12,9 @@ tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
 
 ### number_tensors
 path_numbers = "images/numbers/"
-numbs_list = os.listdir( path_numbers )
+numbs_list = os.listdir( path_numbers )                                         #len( numbs_list ) => 12
 tensors_list = []
-for i in range(0 , len( numbs_list )):
+for i in range( 0 , len( numbs_list )):                                         #range( 0, 12 )
     tensors_list.append( loadImageAsTensor( f"{path_numbers}{numbs_list[i]}" ))
 
 ## what are we loking for
@@ -27,6 +27,5 @@ path_weights_numbers = "images/masks/numbers/"
 numbs_list = os.listdir( path_weights_numbers )
 weights_list = []
 
-weights_number = loadImageAsTensor( f"{path_weights_numbers}{numbs_list[0]}" )
-for i in range(0 , len( numbs_list )):
+for i in range( 0 , len( numbs_list )):
     weights_list.append( loadImageAsTensor( f"{path_numbers}{numbs_list[i]}" ))
