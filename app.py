@@ -5,6 +5,7 @@ import torch
 from torch import nn
 
 #OTHER
+import time
 import random
 import numpy as np
 from helper_func import *
@@ -67,10 +68,16 @@ else:
 '''
 
 ## detect score
+start_time = time.time()
+
 getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
 getConvTensor.weight = nn.Parameter( weights_list[ 0 ])
 
 conv_result = getConvTensor( tensor_score ).detach()
+end_time = time.time()
+total_time = end_time - start_time
+print( f"All time >>> {total_time}" )
+
 print( conv_result )
 
 
