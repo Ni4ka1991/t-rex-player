@@ -52,12 +52,15 @@ else:
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 11, 13 ))
 n_1 = int(input( "Enter the number_1 from the range 0...9 >>>" ))
+#n_1 = 0
 getConvTensor.weight = nn.Parameter( weights_list[ n_1 ])
 n_2 = int(input( "Enter the number_2 from the range 0...9 >>>" ))
+#n_2 = 2
 conv_result = getConvTensor( tensors_list[ n_2 ] ).detach()
 sq = torch.squeeze( conv_result )
 item = sq.item()*10
-if item <= 135:
+print( f" item >>> {item}" )
+if item <= 109:
     print( "Numbers are different " )
 else:
     print( "Numbers match" )
