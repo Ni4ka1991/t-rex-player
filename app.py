@@ -19,7 +19,7 @@ ds = detectSomething()
 
 
 #DETECTING
-
+'''
 ##detect t-rex
 arr_dim = weights_t_rex.shape[3]
 t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
@@ -51,10 +51,10 @@ else:
     
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 11, 13 ))
-n_1 = int(input( "Enter the number_1 from the range 0...9 >>>" ))
+n_1 = int( input( "Enter the number_1 from the range 0...9 >>>" ))
 #n_1 = 0
 getConvTensor.weight = nn.Parameter( weights_list[ n_1 ])
-n_2 = int(input( "Enter the number_2 from the range 0...9 >>>" ))
+n_2 = int( input( "Enter the number_2 from the range 0...9 >>>" ))
 #n_2 = 2
 conv_result = getConvTensor( tensors_list[ n_2 ] ).detach()
 sq = torch.squeeze( conv_result )
@@ -64,9 +64,14 @@ if item <= 109:
     print( "Numbers are different " )
 else:
     print( "Numbers match" )
+'''
 
+## detect score
+getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
+getConvTensor.weight = nn.Parameter( weights_list[ 0 ])
 
-
+conv_result = getConvTensor( tensor_score ).detach()
+print( conv_result )
 
 
 

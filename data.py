@@ -9,6 +9,8 @@ tensor_cactus      = loadImageAsTensor( "images/cacti/mid-3.jpg" )
 tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 tensor_distance    = loadImageAsTensor( "images/distance/none-N.jpg" )
 tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
+tensor_score       = loadImageAsTensor( "images/scores/00362.jpg" )
+
 
 ### number_tensors
 path_numbers = "images/numbers/"
