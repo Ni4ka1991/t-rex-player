@@ -68,12 +68,15 @@ else:
 '''
 
 ## detect score
+   ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
+print( f"tensor_score 00362       >>> {tensor_score}" )
+print( f"tensor_score 00362 shape >>> {tensor_score.shape}" )
 start_time = time.time()
 
 getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
-getConvTensor.weight = nn.Parameter( weights_list[ 0 ])
+getConvTensor.weight = nn.Parameter( weights_list[ 0 ])            #image with dimensions 11x13
 
-conv_result = getConvTensor( tensor_score ).detach()
+conv_result = getConvTensor( tensor_score ).detach()               #score image 00362.jpg
 end_time = time.time()
 total_time = end_time - start_time
 print( f"All time >>> {total_time}" )
