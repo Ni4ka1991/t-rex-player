@@ -13,6 +13,7 @@ from detect2 import *
 from os import system
 
 system("clear")
+'''
 print( f"number_list >>> ls -l >>> {numbs_list}"  )
 print( f"len of numds_list => {len(numbs_list)}" )
 print( f"len of tensors_list >> {len(tensors_list)}"  )
@@ -20,3 +21,18 @@ print( f"tensors_list[4] vvv\n {tensors_list[4]}" )
 input( "Hit Enter ..." )
 print( f"\nlen of weights_list => {len(weights_list)}" )
 print( f"weights_list[4] vvv\n {weights_list[4]}" )
+'''
+#x = torch.zeros( 2, 1, 2, 1, 2 )
+x = torch.ones( 2, 1 )   # 2 >>> rows, 4 >>> colums
+print( f" x >>> \n{x}" )
+y = torch.squeeze( x )
+print( f" y >>> \n{y}" )
+print( "*"*10 )
+x = torch.ones( 2, 4 )   # 2 >>> rows, 4 >>> colums
+print( f" x >>> \n{x}" )
+y = torch.squeeze( x )
+print( f" y >>> \n{y}" )
+x = torch.zeros( 2, 1, 2 )
+print( f" x >>> \n{x}" )
+y = torch.squeeze(x)
+
