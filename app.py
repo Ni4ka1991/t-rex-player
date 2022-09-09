@@ -74,8 +74,10 @@ print( f"tensor_score 00362 shape >>> {tensor_score.shape}" )
 
 ### tensor to array
 tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()  # 
+
+digit = tensor_score_np_array[ 0, 10 ]
 input( "Hit ENTER ..." )
-print( f"tensor_score_np_array     >>> {tensor_score_np_array}" )
+print( f"first digit     >>> {digit}" )
 
 
 getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
