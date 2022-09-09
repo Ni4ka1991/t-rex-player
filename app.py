@@ -73,7 +73,9 @@ print( f"tensor_score 00362       >>> {tensor_score}" )
 print( f"tensor_score 00362 shape >>> {tensor_score.shape}" )
 
 ### tensor to array
-tensor_score_1 = tensor_score.detach()
+tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()  # 
+input( "Hit ENTER ..." )
+print( f"tensor_score_np_array     >>> {tensor_score_np_array}" )
 
 
 getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
@@ -81,7 +83,7 @@ getConvTensor.weight = nn.Parameter( weights_list[ 0 ])            #image with d
 
 conv_result = getConvTensor( tensor_score ).detach()               #score image 00362.jpg
 
-print( conv_result )
+#print( conv_result )
 
 
 
