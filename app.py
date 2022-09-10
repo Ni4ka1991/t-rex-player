@@ -71,13 +71,17 @@ else:
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
 print( f"tensor_score 00362       >>> {tensor_score}" )
 print( f"tensor_score 00362 shape >>> {tensor_score.shape}" )
+input( "Hit ENTER ..." )
 
 ### tensor to array
 tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()  # 
-
-digit = tensor_score_np_array[ 0, 10 ]
+print( f"tensor_score_np_array >>> {tensor_score_np_array}" )
 input( "Hit ENTER ..." )
-print( f"first digit     >>> {digit}" )
+
+digit = tensor_score_np_array[ 0 : 11 ]
+x_digit = torch.from_numpy( digit )
+print( f"x_digit >>> {x_digit}" )
+print( f"x_digit.shape >>> {x_digit.shape}" )
 
 
 getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
