@@ -69,25 +69,15 @@ else:
 
 ## detect score
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
-print( f"tensor_score 00362       >>> {tensor_score}" )
-print( f"tensor_score 00362 shape >>> {tensor_score.shape}" )
-input( "Hit ENTER ..." )
+tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()  #transform score tensor to numpy array 
 
-### tensor to array
-tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()  # 
-print( f"tensor_score_np_array >>> {tensor_score_np_array}" )
-input( "Hit ENTER ..." )
+digit = tensor_score_np_array[ 0 : 11 ]                                    #isolate first difit from score tensor
+x_digit = torch.from_numpy( digit ).unsqueeze(0).unsqueeze(0)                #transform numpy digit to 4-dimention tensor
 
-digit = tensor_score_np_array[ 0 : 11 ]
-x_digit = torch.from_numpy( digit )
-print( f"x_digit >>> {x_digit}" )
-print( f"x_digit.shape >>> {x_digit.shape}" )
-
-
-getConvTensor = nn.Conv2d( 1, 1, ( 55, 13 ))
-getConvTensor.weight = nn.Parameter( weights_list[ 0 ])            #image with dimensions 11x13
-
-conv_result = getConvTensor( tensor_score ).detach()               #score image 00362.jpg
+getConvTensor = nn.Conv2d( 1, 1, ( 11, 13 ))
+getConvTensor.weight = nn.Parameter( weights_list[ 0 ])                    # 
+conv_result = getConvTensor( x_digit ).detach().squeeze()
+print( f"conv_result >>> {conv_result}" )
 
 #print( conv_result )
 
