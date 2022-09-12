@@ -69,24 +69,14 @@ else:
 
 ## detect score
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
-tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()    #transform score tensor to numpy array 
-print( f"score to numpy.shape >>> {tensor_score_np_array.shape}" )
-input( "Hit ENTER to continue >>>" ) 
+tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()       #transform score tensor to numpy array 
 
 digit = tensor_score_np_array[ :, 0:11 ]                                        #isolate first difit from score tensor
-print( f"digit.shape >>> {digit.shape}" )
-input( "Hit ENTER to continue >>>" ) 
-x_digit = torch.from_numpy( digit ).unsqueeze(0).unsqueeze(0)                #transform numpy digit to 4-dimention tensor
-print( f"x_digit tensor  >>> {x_digit}" )
-print( f"x_digit.shape >>> {x_digit.shape}" )
-'''
+x_digit = torch.from_numpy( digit ).unsqueeze(0).unsqueeze(0)                   #transform numpy digit to 4-dimention tensor
 getConvTensor = nn.Conv2d( 1, 1, ( 13, 11 ))
-getConvTensor.weight = nn.Parameter( weights_list[ 0 ])                    # 
-conv_result = getConvTensor( x_digit ).detach().squeeze()
+getConvTensor.weight = nn.Parameter( weights_list[ 9 ])                     
+conv_result = getConvTensor( x_digit ).detach().squeeze()          
 print( f"conv_result >>> {conv_result}" )
-
-#print( conv_result )
-'''
 
 
 
