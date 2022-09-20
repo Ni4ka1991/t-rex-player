@@ -71,7 +71,7 @@ else:
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
 tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()              #transform score tensor to numpy array 
 
-
+sc = 0
 for i in range( 5 ):
     
     digit = tensor_score_np_array[ :, i * 11: ( i + 1 ) * 11 ]                         #isolate first difit from score tensor
@@ -82,10 +82,8 @@ for i in range( 5 ):
         getConvTensor.weight = nn.Parameter( weights_list[ k ])                     
         conv_result = getConvTensor( x_digit ).detach().squeeze()          
         if conv_result > 10:
-#            print( f"detected digit is >>> {k}" )
-            print( f"{k} : {i}" )
-            sc = k * 10**(5 - i )
-            print(sc)
+            sc = sc + k * 10 ** ( 5 - 1 - i )
+print(sc)
 
 
 
