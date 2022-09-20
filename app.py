@@ -71,10 +71,10 @@ else:
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
 tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()       #transform score tensor to numpy array 
 
-block = 0
+
 for i in range( 5 ):
     
-    digit = tensor_score_np_array[ :, block:block + 11 ]                                        #isolate first difit from score tensor
+    digit = tensor_score_np_array[ :, i * 11: ( i + 1 ) * 11 ]                                        #isolate first difit from score tensor
     x_digit = torch.from_numpy( digit ).unsqueeze(0).unsqueeze(0)                   #transform numpy digit to 4-dimention tensor
     getConvTensor = nn.Conv2d( 1, 1, ( 13, 11 ))
     
@@ -83,7 +83,6 @@ for i in range( 5 ):
         conv_result = getConvTensor( x_digit ).detach().squeeze()          
         if conv_result > 10:
             print( f"detected digit is >>> {k}" )
-    block += 11
 
 
 
