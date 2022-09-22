@@ -67,6 +67,9 @@ else:
     print( "Numbers match" )
 '''
 
+
+
+#def ...
 ## detect score
    ### Caution! Number ONE is 8 pixels wide, another numbers has 9 pixels wide
 tensor_score_np_array = tensor_score.detach().to('cpu').numpy().squeeze()              #transform score tensor to numpy array 
@@ -84,7 +87,7 @@ for i in range( 5 ):
         if conv_result > 10:
             sc = sc + k * 10 ** ( 5 - 1 - i )
 print(sc)
-
+###    return torch.Tensor([sc])
 
 
 
