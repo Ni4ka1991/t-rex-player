@@ -31,3 +31,8 @@ weights_list = []
 
 for i in range( 0 , len( numbs_list )):
     weights_list.append( loadImageAsTensor( f"{path_numbers}{numbs_list[i]}" ))
+
+
+
+### frame to tensor
+tensor_frame    = loadImageAsTensor( "images/frames/frame.jpg" )
