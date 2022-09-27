@@ -65,7 +65,7 @@ from torch import nn
 from torchvision.transforms.functional import rgb_to_grayscale, invert
 from torch.nn.functional import normalize
 from torchvision.io import read_image
-
+from PIL import Image
 #OTHER
 import matplotlib.pyplot as plt
 from os import system
@@ -75,8 +75,17 @@ def loadImageAsTensor( path ):
     return tensor
 '''
 
-tensor = read_image( 'images/frames/frame.jpg' ).type(torch.float32).unsqueeze_(0)
-print(tensor)
+#tensor = rgb_to_grayscale(read_image( 'images/frames/frame.jpg' ).type(torch.float32))
+img = Image.open( 'images/frames/frame.jpg' ).convert('RGB')
+
+#print( tensor.size() )
+#input("hit enter ...")
+
+# Transform to torch tensor
+toTensor = transforms.ToTensor()
+frameTensor = toTensor( img )
+
+print(frameTensor)
 
 
 
