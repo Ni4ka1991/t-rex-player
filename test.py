@@ -7,8 +7,8 @@ from torch import nn
 #OTHER
 import random
 import numpy as np
-from helper_func import *
-from data import *
+#from helper_func import *
+#from data import *
 from detect2 import *
 from os import system
 
@@ -35,7 +35,7 @@ x = torch.zeros( 2, 1, 2 )
 print( f" x >>> \n{x}" )
 y = torch.squeeze(x)
 '''
-
+'''
 a = 4
 b = 6
 c = 8
@@ -57,6 +57,36 @@ print(score)
 
 #for i in range(5):
 #    score += x * 10 ** ( 5 - 1 - i )
+'''
+
+#TORCH
+import torch
+from torch import nn
+from torchvision.transforms.functional import rgb_to_grayscale, invert
+from torch.nn.functional import normalize
+from torchvision.io import read_image
+
+#OTHER
+import matplotlib.pyplot as plt
+from os import system
+'''
+def loadImageAsTensor( path ):
+    tensor = ( normalize( invert( rgb_to_grayscale(read_image( path ))).type(torch.float32).unsqueeze_(0)
+    return tensor
+'''
+
+tensor = read_image( 'images/frames/frame.jpg' ).type(torch.float32).unsqueeze_(0)
+print(tensor)
+
+
+
+
+
+
+
+
+
+
 
 
 

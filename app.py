@@ -3,6 +3,11 @@
 #TORCH
 import torch
 from torch import nn
+from torchvision import transforms
+
+
+#PROJECT MODULES
+from data import *
 
 #OTHER
 from os import system
@@ -27,7 +32,16 @@ canvas = browser.find_element(  By.CLASS_NAME, 'runner-canvas' )
 frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png').substring(22)", canvas )
 frame_png = base64.b64decode( frame_base64 )
 
-img_file = open( 'images/frames/frame.jpg', "wb" )
-img_file.write( frame_png )
-img_file.close()
+'''
+# Convert to PIL Image
+frame = io.BytesIO( frame_png )
+frame = Image.open( frame )
+
+# Transform to torch tensor
+toTensor = transforms.ToTensor()
+frameTensor = toTensor( frame )
+
+print( frameTensor.shape )
+'''
+print( tensor_frame )
 

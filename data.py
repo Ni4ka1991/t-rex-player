@@ -3,6 +3,8 @@
 from helper_func import *
 import os
 
+from PIL import Image
+
 #SEARCING DATA
 ## where are we loking for 
 tensor_cactus      = loadImageAsTensor( "images/cacti/mid-3.jpg" )
@@ -33,6 +35,5 @@ for i in range( 0 , len( numbs_list )):
     weights_list.append( loadImageAsTensor( f"{path_numbers}{numbs_list[i]}" ))
 
 
-
-### frame to tensor
+# frame to tensor
 tensor_frame    = loadImageAsTensor( "images/frames/frame.jpg" )
