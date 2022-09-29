@@ -76,7 +76,8 @@ def loadImageAsTensor( path ):
 '''
 
 #tensor = rgb_to_grayscale(read_image( 'images/frames/frame.jpg' ).type(torch.float32))
-img = Image.open( 'images/frames/frame.jpg' ).convert('RGB')
+#img = Image.open( 'images/frames/frame.jpg' ).convert('RGB')
+img = Image.open( 'images/frames/frame.jpg' )
 
 #print( tensor.size() )
 #input("hit enter ...")
@@ -85,7 +86,7 @@ img = Image.open( 'images/frames/frame.jpg' ).convert('RGB')
 toTensor = transforms.ToTensor()
 frameTensor = toTensor( img )
 
-print(frameTensor)
+print(frameTensor.shape)
 
 
 

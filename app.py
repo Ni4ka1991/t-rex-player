@@ -30,18 +30,19 @@ canvas = browser.find_element(  By.CLASS_NAME, 'runner-canvas' )
 
 #get the image from the canvas
 frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png').substring(22)", canvas )
-frame_png = base64.b64decode( frame_base64 )
+frame_binary = base64.b64decode( frame_base64 )
 
-'''
-# Convert to PIL Image
-frame = io.BytesIO( frame_png )
-frame = Image.open( frame )
+file_name = 'images/frames/frame.jpg'
 
-# Transform to torch tensor
-toTensor = transforms.ToTensor()
-frameTensor = toTensor( frame )
+with open( file_name, "wb" ) as f:
+    f.write( frame_binary )
+  # f gets closed when exit the with statement
 
-print( frameTensor.shape )
-'''
-print( tensor_frame )
+pil_img = Image.open( 'images/frames/frame.jpg' ).convert('RGB')
+#tensor = rgb_to_grayscale( pil_img )
+
+#tensor = ( normalize( invert( pil_img ))).type(torch.float32).unsqueeze_(0)
+tensor = normalize( invert( pil_img ))
+
+print( tensor )
 
