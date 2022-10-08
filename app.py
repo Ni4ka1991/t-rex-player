@@ -16,7 +16,7 @@ from selenium.webdriver.common.by import By
 import base64
 from matplotlib import pyplot as plt
 from matplotlib.image import imread
-from PIL import Image
+from PIL import Image, ImageOps 
 import io
 
 #system( "clear" )
@@ -28,24 +28,23 @@ browser.get('https://www.trex-game.skipser.com/')
 
 # find canvas element by class selector
 canvas = browser.find_element(  By.CLASS_NAME, 'runner-canvas' )
-
+'''
 #get the image from the canvas
 frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png').substring(22)", canvas )
-frame_binary = base64.b64decode( frame_base64 )
-file_name = 'images/frames/frame.jpg'
-
-with open( file_name, "wb" ) as f:
-    f.write( frame_binary )
-  # f gets closed when exit the with statement
+frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
+frame_buffer = io.BytesIO( frame_binary )       # write to an in memory buffer
+frame_png    = Image.open( frame_buffer )       # get PIL image
 
 
-#image_without_alpha = file_name[:,:,:3]
+toTensor = transforms.ToTensor()
+frame_tensor = toTensor( ImageOps.grayscale( frame_png ))
+print( frame_tensor.shape )
 
 
 #pil_img =  invert(Image.open( 'images/frames/frame.jpg' ))
 #plt.imshow( image_without_alpha )
-img = imread( file_name)
-plt.imshow( img )
+#img = imread( file_name)
+plt.imshow( frame_png )
 #plt.title( ' PIL image invert' )
 plt.show()
 #tensor = normalize( rgb_to_grayscale( pil_img ))
@@ -54,4 +53,4 @@ plt.show()
 #tensor = normalize( invert( pil_img ))
 
 #print( tensor )
-
+'''

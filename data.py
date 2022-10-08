@@ -3,7 +3,7 @@
 from helper_func import *
 import os
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 #SEARCING DATA
 ## where are we loking for 
@@ -12,6 +12,7 @@ tensor_t_rex       = loadImageAsTensor( "images/t-rex/t-rex-top-1.jpg" )
 tensor_distance    = loadImageAsTensor( "images/distance/none-N.jpg" )
 tensor_go          = loadImageAsTensor( "images/GO/go_none.jpg" )
 tensor_score       = loadImageAsTensor( "images/scores/00042.jpg" )
+tensor_frame       = loadImageAsTensor( "images/frames/frame.jpg" )
 
 
 ### number_tensors
