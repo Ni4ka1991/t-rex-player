@@ -10,6 +10,8 @@ from torchvision import transforms
 from data import *
 
 #OTHER
+import struct
+import numpy as np
 from os import system
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -28,10 +30,25 @@ browser.get('https://www.trex-game.skipser.com/')
 
 # find canvas element by class selector
 canvas = browser.find_element(  By.CLASS_NAME, 'runner-canvas' )
-'''
+
 #get the image from the canvas
 frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png').substring(22)", canvas )
 frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
+#print( frame_binary )
+
+with open('images/frames/frame.jpeg', 'wb') as img_file:
+    img_file.write( frame_binary )
+
+
+#frame_buffer = io.BytesIO( frame_binary )
+#frame_np     =  np.frombuffer( frame_binary, np.float32 )
+#print( frame_np )
+
+
+
+
+
+'''
 frame_buffer = io.BytesIO( frame_binary )       # write to an in memory buffer
 frame_png    = Image.open( frame_buffer )       # get PIL image
 
