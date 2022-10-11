@@ -22,9 +22,7 @@ def viewImg( img ):
     plt.show()
 
 def loadImageAsTensor( path ):
-    tensor = ( normalize( invert( rgb_to_grayscale(
-        read_image( path ))).type(torch.float32))
-    ).unsqueeze_(0)
+    tensor = ( normalize( invert( rgb_to_grayscale(read_image( path ))).type(torch.float32) ) ).unsqueeze_(0)
     return tensor
 
 
