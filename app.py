@@ -51,11 +51,13 @@ print( f"shape of np_array =>>> {np_img.shape}" )
 print( f"dimention of np_array =>>> {np_img.ndim}" )
 '''
 from copy import deepcopy
-red_image = deepcopy( np_img )
-#red_image[:, :, 50:100] = 255
-red_image[25,40,0] = 125
+image = deepcopy( np_img )
+#image[ :, :, 1 ] = 255      #the visible layer come to be green
+#image[ :, :, 0 ] = 255      #the visible layer come to be red
+#image[ :, :, 2 ] = 255      #the visible layer come to be blue
+#image[ :, :, 3 ] = 255       #alpha layer come to be black
 
-plt.imshow( red_image )
+plt.imshow( image )
 #plt.title( ' image ' )
 plt.show()
 '''
