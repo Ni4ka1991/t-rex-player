@@ -52,8 +52,8 @@ print( f"dimention of np_array =>>> {np_img.ndim}" )
 '''
 from copy import deepcopy
 red_image = deepcopy( np_img )
-red_image[0:20, 20:50, 50:100] = 255
-red_image[:,:,:] = 125
+#red_image[:, :, 50:100] = 255
+red_image[25,40,0] = 125
 
 plt.imshow( red_image )
 #plt.title( ' image ' )
