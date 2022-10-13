@@ -11,11 +11,11 @@ from data import *
 
 #OTHER
 import struct
+import base64
 import numpy as np
 from os import system
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import base64
 from matplotlib import pyplot as plt
 from matplotlib.image import imread
 from PIL import Image, ImageOps 
@@ -36,8 +36,18 @@ frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png
 frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
 frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image
-print( frame_png )
-#plt.imshow( frame_png )
+
+print("#"*20 )
+print(frame_png.format)
+print(frame_png.size)
+print(frame_png.mode)
+print("#"*20 )
+np_img = np.array( frame_png )
+print( f"shape of np_array =>>> {np_img.shape}" )
+print( f"dimention of np_array =>>> {np_img.ndim}" )
+img_gray = 255 - np_img[ :, :, 3 ]
+#print( img_gray )
+#plt.imshow( img_gray )
 #plt.title( ' image ' )
 #plt.show()
 '''
