@@ -49,7 +49,6 @@ np_img = np.array( frame_png )
 '''
 print( f"shape of np_array =>>> {np_img.shape}" )
 print( f"dimention of np_array =>>> {np_img.ndim}" )
-'''
 from copy import deepcopy
 image = deepcopy( np_img )
 #image[ :, :, 1 ] = 255      #the visible layer come to be green
@@ -78,4 +77,3 @@ plt.show()
 #tensor = normalize( invert( pil_img ))
 
 #print( tensor )
-'''
