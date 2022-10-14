@@ -36,6 +36,7 @@ frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png
 frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
 frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image
+
 '''
 print("#"*20 )
 print(frame_png.format)
@@ -43,7 +44,9 @@ print(frame_png.size)
 print(frame_png.mode)
 print("#"*20 )
 '''
+from copy import deepcopy
 np_img = np.array( frame_png )
+image = deepcopy( np_img )
 
 
 '''
@@ -59,6 +62,12 @@ image = deepcopy( np_img )
 plt.imshow( image )
 #plt.title( ' image ' )
 plt.show()
+'''
+rgb_img = np.delete( image, 3, 0 )
+plt.imshow( rgb_img )
+#plt.title( ' image ' )
+plt.show()
+
 '''
 toTensor = transforms.ToTensor()
 frame_tensor = toTensor( ImageOps.grayscale( frame_png ))
@@ -77,3 +86,5 @@ plt.show()
 #tensor = normalize( invert( pil_img ))
 
 #print( tensor )
+
+'''
