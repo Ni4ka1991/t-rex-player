@@ -20,6 +20,7 @@ from matplotlib import pyplot as plt
 from matplotlib.image import imread
 from PIL import Image, ImageOps 
 import io
+from copy import deepcopy
 
 system( "clear" )
 
@@ -36,34 +37,10 @@ frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png
 frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
 frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image
+np_img = np.array( frame_png )                  # transform img to array
+image = deepcopy( np_img )                      # get a copy 
 
-'''
-print("#"*20 )
-print(frame_png.format)
-print(frame_png.size)
-print(frame_png.mode)
-print("#"*20 )
-'''
-from copy import deepcopy
-np_img = np.array( frame_png )
-image = deepcopy( np_img )
-
-
-'''
-print( f"shape of np_array =>>> {np_img.shape}" )
-print( f"dimention of np_array =>>> {np_img.ndim}" )
-from copy import deepcopy
-image = deepcopy( np_img )
-#image[ :, :, 1 ] = 255      #the visible layer come to be green
-#image[ :, :, 0 ] = 255      #the visible layer come to be red
-#image[ :, :, 2 ] = 255      #the visible layer come to be blue
-#image[ :, :, 3 ] = 255       #alpha layer come to be black
-
-plt.imshow( image )
-#plt.title( ' image ' )
-plt.show()
-'''
-rgb_img = np.delete( image, 3, 0 )
+rgb_img = np.delete( image, 3, 0 )              # remove alpha channel from RGBA image
 plt.imshow( rgb_img )
 #plt.title( ' image ' )
 plt.show()
