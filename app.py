@@ -37,31 +37,15 @@ frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png
 frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
 frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image
-np_img = np.array( frame_png )                  # transform img to array
+num_channel = len( frame_png.split())
+print( f"Type of frame_png PIL Image.open {type( frame_png)} " )
+frame_gray   = ImageOps.grayscale( frame_png ) 
+num_channel = len( frame_gray.split())
+print( num_channel )
+print( f"Type of frame_gray PIL ImageOps {type( frame_gray)} " )
+#print(frame_gray.shape)
+np_img = np.array( frame_gray )                  # transform img to array
 image = deepcopy( np_img )                      # get a copy 
-
 rgb_img = np.delete( image, 3, 0 )              # remove alpha channel from RGBA image
-plt.imshow( rgb_img )
-#plt.title( ' image ' )
-plt.show()
+#print(rgb_img.shape)
 
-'''
-toTensor = transforms.ToTensor()
-frame_tensor = toTensor( ImageOps.grayscale( frame_png ))
-print( frame_tensor.shape )
-
-
-#pil_img =  invert(Image.open( 'images/frames/frame.jpg' ))
-#plt.imshow( image_without_alpha )
-#img = imread( file_name)
-plt.imshow( frame_png )
-#plt.title( ' PIL image invert' )
-plt.show()
-#tensor = normalize( rgb_to_grayscale( pil_img ))
-
-#tensor = ( normalize( invert( pil_img ))).type(torch.float32).unsqueeze_(0)
-#tensor = normalize( invert( pil_img ))
-
-#print( tensor )
-
-'''
