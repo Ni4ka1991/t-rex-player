@@ -39,10 +39,11 @@ frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image
 num_channel = len( frame_png.split())
 print( f"Type of frame_png PIL Image.open {type( frame_png)} " )
+print( f"frame_png number of channels >>> {num_channel}" )
 frame_gray   = ImageOps.grayscale( frame_png ) 
 num_channel = len( frame_gray.split())
-print( num_channel )
 print( f"Type of frame_gray PIL ImageOps {type( frame_gray)} " )
+print( f"frame_gray number of channels >>> {num_channel}" )
 #print(frame_gray.shape)
 np_img = np.array( frame_gray )                  # transform img to array
 image = deepcopy( np_img )                      # get a copy 
