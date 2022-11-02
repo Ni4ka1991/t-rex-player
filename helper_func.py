@@ -15,18 +15,16 @@ from os import system
 
 
 def viewImg( img ):
-    img_sqz = img.squeeze(0)
+#    img_sqz = img.squeeze(0)
     plt.figure()
-    plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
+#    plt.imshow( img_sqz.detach().permute( 1, 2, 0 ), interpolation='nearest', cmap = 'gray' )
     plt.title( "Image view >>>" )
+#    plt.imshow( img, cmap = plt.get_cmap( 'gray' ))                     #for display PIL img
+    plt.imshow( img.permute( 1, 2, 0 ), cmap = plt.get_cmap( 'gray' ))   # for display img as tensor
     plt.show()
 
 def loadImageAsTensor( path ):
     tensor = ( normalize( invert( rgb_to_grayscale( read_image( path ))).type(torch.float32) ) ).unsqueeze_(0)
-    return tensor
-
-def convertImageToTensor( img ):
-    tensor = ( normalize( invert( rgb_to_grayscale( read_image( img ))).type(torch.float32) ) ).unsqueeze_(0)
     return tensor
 
 def weightsCreator( row, col ):#22*200
