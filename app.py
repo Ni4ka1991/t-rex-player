@@ -39,13 +39,6 @@ frame_binary = base64.b64decode( frame_base64 ) # decode base64 into bytes
 frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image in RGBA (4 channel)
 frame_gray   = ImageOps.grayscale( frame_png )  # get a grayscale image with 1 channel
-
-#frame_tensor = normalize( invert( to_tensor( frame_gray ).type( torch.float32 )))
 frame_tensor = normalize( invert( to_tensor( frame_gray).type( torch.float32 )))
-viewImg( frame_tensor )
-
-'''
-np_img = np.array( frame_gray )                  # transform img to array
-print( f"np_img.shape >>> {np_img.shape}" )
-print( f"{np_img}" )
-'''
+frame_arr = frame_tensor.cpu().detach().numpy()
+print(frame_arr)
