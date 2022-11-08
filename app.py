@@ -10,28 +10,27 @@ from torchvision.transforms.functional import invert, to_tensor
 
 #PROJECT MODULES
 from data import *
+from client import *
+from browser_check import *
 
 #OTHER
 import struct
 import base64
 import numpy as np
 from os import system
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from matplotlib import pyplot as plt
 from matplotlib.image import imread
 from PIL import Image, ImageOps 
 import io
 
+getChromeVersion()
+
+
+'''
 system( "clear" )
 
-##Connect to browser
 
-browser = webdriver.Chrome( './drivers/chromedriver.exe' )
-browser.get('https://www.trex-game.skipser.com/')
-
-# find canvas element by class selector
-canvas = browser.find_element(  By.CLASS_NAME, 'runner-canvas' )
+browser, canvas = connectToClient() 
 
 #get the image from the canvas
 frame_base64 = browser.execute_script( "return arguments[0].toDataURL('image/png').substring(22)", canvas )
@@ -49,3 +48,4 @@ zone_A = frame_tensor[0][:,0:48]
 #print( zone_A.shape )
 zone_A = zone_A.unsqueeze(0)
 viewImg( zone_A )
+'''
