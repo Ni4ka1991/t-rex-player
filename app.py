@@ -40,5 +40,12 @@ frame_buffer = io.BytesIO( frame_binary )
 frame_png    = Image.open( frame_buffer )       # get PIL image in RGBA (4 channel)
 frame_gray   = ImageOps.grayscale( frame_png )  # get a grayscale image with 1 channel
 frame_tensor = normalize( invert( to_tensor( frame_gray).type( torch.float32 )))
-frame_arr = frame_tensor.cpu().detach().numpy()
-print(frame_arr)
+#print( frame_tensor )
+#print( frame_tensor.shape )
+
+#viewImg( frame_tensor )
+zone_A = frame_tensor[0][:,0:48]
+#print( zone_A )
+#print( zone_A.shape )
+zone_A = zone_A.unsqueeze(0)
+viewImg( zone_A )
