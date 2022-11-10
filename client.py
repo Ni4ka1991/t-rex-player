@@ -1,5 +1,17 @@
 # client.py module
 
+#TORCH
+import torch
+from torch import nn
+from torchvision import transforms
+from torch.nn.functional import normalize
+from torchvision.transforms.functional import invert, to_tensor
+
+#OTHER
+import io
+import struct
+import base64
+from PIL import Image, ImageOps 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -21,13 +33,5 @@ def getCanvasTensor( browser, canvas ):
     frame_png    = Image.open( frame_buffer )       # get PIL image in RGBA (4 channel)
     frame_gray   = ImageOps.grayscale( frame_png )  # get a grayscale image with 1 channel
     frame_tensor = normalize( invert( to_tensor( frame_gray).type( torch.float32 )))
-    #print( frame_tensor )
-    #print( frame_tensor.shape )
-
-    #viewImg( frame_tensor )
-    zone_A = frame_tensor[0][:,0:48]
-    #print( zone_A )
-    #print( zone_A.shape )
-    zone_A = zone_A.unsqueeze(0)
-    viewImg( zone_A )
-
+    
+    return frame_tensor
