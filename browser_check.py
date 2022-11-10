@@ -1,6 +1,7 @@
 # browser_check.py module
 
 import logging
+import requests as r
 from selenium import webdriver
 
 logger = logging.Logger('catch_all')
@@ -41,6 +42,18 @@ def getChromeVersion():
     return checking_browserversion, checking_driverversion
 
 def updateChromeVersion():
+    '''
+    LINK = 'https://chromedriver.chromium.org/downloads'
+    try:
+        html = r.get(LINK)
+    except r.ConnectionError as e:
+        print("Error in connecting")
+    except r.Timeout as e:
+        print("Timeout")
+    except r.RequestException as e:
+        print("Invalid URL")
+    except (KeyboardInterrupt, SystemExit):
+        print("System has quit")
+        sys.exit(1)
+    '''
     pass
-
-
