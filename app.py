@@ -20,4 +20,8 @@ browser, canvas = connectToClient()
 frame_tensor    = getCanvasTensor( browser, canvas )
 zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
 #viewImg( zoneA )
-plotData( frame_tensor )
+plot_img = initPlot( frame_tensor )
+
+for i in range( 1000 ):
+    frame_tensor = torch.rand( 150, 600 )
+    updatePlot( frame_tensor, plot_img )
