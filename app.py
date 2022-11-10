@@ -4,6 +4,7 @@
 from data import *
 from client import *
 from browser_check import *
+from plot import *
 
 #OTHER
 from os import system
@@ -18,4 +19,5 @@ system( "clear" )
 browser, canvas = connectToClient() 
 frame_tensor    = getCanvasTensor( browser, canvas )
 zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
-viewImg( zoneA )
+#viewImg( zoneA )
+plotData( frame_tensor )
