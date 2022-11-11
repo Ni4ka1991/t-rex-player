@@ -35,7 +35,7 @@ def getCanvasTensor( browser, canvas ):
     frame_tensor = normalize( invert( to_tensor( frame_gray).type( torch.float32 )))
     
     return frame_tensor
-
+'''
 # browser_check.py module
 
 import logging
@@ -80,9 +80,9 @@ def getChromeVersion():
     return checking_browserversion, checking_driverversion
 
 def updateChromeVersion():
-    '''
     LINK = 'https://chromedriver.chromium.org/downloads'
     try:
         html = r.get(LINK)
     except r.ConnectionError as e:
         print("Error in connecting")
+'''

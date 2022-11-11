@@ -20,13 +20,13 @@ img          = None
 frame_tensor = None
 animation    = None
 
-def initPlot( frame_tensor ):
+def initPlot(): 
     global img
     global animation
     global frame_tensor
     img = plt.imshow( frame_tensor[0].numpy() )
     
-    animation = FuncAnimation( plt.gcf(), update, frames=10000, interval = 1 )
+    animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
     plt.show()
     return img
@@ -38,5 +38,5 @@ def update( frame_i ):
     return img, "figure 1"
     
 browser, canvas = connectToClient() 
-zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
-plot_img = initPlot( frame_tensor )
+frame_tensor    = getCanvasTensor( browser, canvas )
+plot_img = initPlot( )
