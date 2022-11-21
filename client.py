@@ -8,6 +8,7 @@ from torch.nn.functional import normalize
 from torchvision.transforms.functional import invert, to_tensor
 
 #OTHER
+from webdriver_manager.chrome import ChromeDriverManager
 import io
 import struct
 import base64
@@ -17,7 +18,7 @@ from selenium.webdriver.common.by import By
 
 ##Connect to browser
 def connectToClient():
-    browser = webdriver.Chrome( './drivers/chromedriver.exe' )
+    browser = webdriver.Chrome( 'drivers/chromedriver' )
     browser.get('https://www.trex-game.skipser.com/')
 
     # find canvas element by class selector

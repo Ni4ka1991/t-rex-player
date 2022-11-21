@@ -28,7 +28,7 @@ def initPlot():
     
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
-    plt.show()
+    plt.show( animation ) 
     return img
 
 def update( frame_i ):
