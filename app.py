@@ -28,8 +28,8 @@ def initPlot():
     
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
-    plt.show( animation ) 
-    return img
+    plt.show( ) 
+#    return img
 
 def update( frame_i ):
     global frame_tensor
@@ -39,4 +39,12 @@ def update( frame_i ):
     
 browser, canvas = connectToClient() 
 frame_tensor    = getCanvasTensor( browser, canvas )
+
+
+
 plot_img = initPlot( )
+
+
+
+
+
