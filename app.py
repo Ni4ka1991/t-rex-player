@@ -19,6 +19,9 @@ system( "clear" )
 img          = None
 frame_tensor = None
 animation    = None
+browser, canvas = connectToClient() 
+frame_tensor    = getCanvasTensor( browser, canvas )
+zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
 
 def initPlot(): 
     global img
@@ -33,14 +36,14 @@ def initPlot():
 
 def update( frame_i ):
     global frame_tensor
+    global zoneA, zoneB, zoneC, zoneD, zoneE
+    
     frame_tensor    = getCanvasTensor( browser, canvas )
-    img.set_data( frame_tensor[0].numpy() )
+    zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
+    
+    img.set_data( zoneA[0].numpy() )
     return img, "figure 1"
     
-browser, canvas = connectToClient() 
-frame_tensor    = getCanvasTensor( browser, canvas )
-
-
 
 plot_img = initPlot( )
 
