@@ -64,7 +64,7 @@ def viewData( data_1, data_2, title ):
 
 def splitTensorToZones( frame_tensor ):
     
-    zoneA = frame_tensor[0][:, 0:48]
+    zoneA = frame_tensor[0][:, 18:68]  #dino right in the frame
     zoneB = frame_tensor[0][:, 48:96]
     zoneC = frame_tensor[0][:, 96:]
     zoneD = frame_tensor[0][10:21, 577:632]

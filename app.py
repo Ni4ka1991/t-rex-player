@@ -9,11 +9,7 @@ from os import system
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
-'''
-v_br, v_dr = getChromeVersion()
-print( f"Browser version >>> {v_br}, \nDriver version  >>> {v_dr}" )
 
-'''
 system( "clear" )
 
 img          = None
@@ -27,7 +23,8 @@ def initPlot():
     global img
     global animation
     global frame_tensor
-    img = plt.imshow( frame_tensor[0].numpy() )
+    global zoneA, zoneB, zoneC, zoneD, zoneE
+    img = plt.imshow( zoneA.numpy() )
     
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
@@ -41,7 +38,7 @@ def update( frame_i ):
     frame_tensor    = getCanvasTensor( browser, canvas )
     zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
     
-    img.set_data( zoneA[0].numpy() )
+    img.set_data( zoneA.numpy() )
     return img, "figure 1"
     
 
