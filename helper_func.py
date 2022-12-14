@@ -71,3 +71,33 @@ def splitTensorToZones( frame_tensor ):
     zoneE = frame_tensor[0][16:40, 200:400]
     
     return ( zoneA, zoneB, zoneC, zoneD, zoneE )
+
+
+
+def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
+    
+    zA = torch.clone( zoneA )
+    zB = torch.clone( zoneB )
+    zC = torch.clone( zoneC )
+    zD = torch.clone( zoneD )
+    zE = torch.clone( zoneE )
+
+    zA[:, -1] = 1
+    zB[:, -1] = 1
+    zC[:, -1] = 1
+    zD[:, -1] = 1
+    zE[:, -1] = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
