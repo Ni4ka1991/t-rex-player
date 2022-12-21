@@ -24,7 +24,7 @@ def initPlot():
     global animation
     global frame_tensor
     global zoneA, zoneB, zoneC, zoneD, zoneE
-    img = plt.imshow( zoneA.numpy() )
+    img = plt.imshow( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
     
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
@@ -38,7 +38,7 @@ def update( frame_i ):
     frame_tensor    = getCanvasTensor( browser, canvas )
     zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
     
-    img.set_data( zoneA.numpy() )
+    img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
     return img, "figure 1"
     
 

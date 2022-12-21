@@ -64,9 +64,9 @@ def viewData( data_1, data_2, title ):
 
 def splitTensorToZones( frame_tensor ):
     
-    zoneA = frame_tensor[0][:, 18:68]  #dino right in the frame
-    zoneB = frame_tensor[0][:, 48:96]
-    zoneC = frame_tensor[0][:, 96:]
+    zoneA = frame_tensor[0][:, 18:82]  #dino right in the frame
+    zoneB = frame_tensor[0][:, 82:146]
+    zoneC = frame_tensor[0][:, 146:]
     zoneD = frame_tensor[0][10:21, 577:632]
     zoneE = frame_tensor[0][16:40, 200:400]
     
@@ -82,13 +82,13 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     zD = torch.clone( zoneD )
     zE = torch.clone( zoneE )
 
-    zA[:, -1] = 1
-    zB[:, -1] = 1
-    zC[:, -1] = 1
-    zD[:, -1] = 1
-    zE[:, -1] = 1
+    zA[:, -1] = 0.05
+    zB[:, -1] = 0.05
+    zC[:, -1] = 0.05
+    zD[:, -1] = 0.05
+    zE[:, -1] = 0.05
 
-
+    return torch.cat(( zA, zB, zC), dim = 1 )
 
 
 
