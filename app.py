@@ -25,7 +25,6 @@ def initPlot():
     global frame_tensor
     global zoneA, zoneB, zoneC, zoneD, zoneE
     img = plt.imshow( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
-    
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
     plt.show( ) 

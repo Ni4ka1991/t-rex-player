@@ -67,11 +67,10 @@ def splitTensorToZones( frame_tensor ):
     zoneA = frame_tensor[0][:, 18:82]  #dino right in the frame
     zoneB = frame_tensor[0][:, 82:146]
     zoneC = frame_tensor[0][:, 146:]
-    zoneD = frame_tensor[0][20:31, 577:632]
-    zoneE = frame_tensor[0][16:20, 200:400]
+    zoneD = frame_tensor[0][10:30, 520:575]
+    zoneE = frame_tensor[0][35:57, 192:392]
     
     return ( zoneA, zoneB, zoneC, zoneD, zoneE )
-
 
 
 def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
@@ -99,8 +98,8 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     zE[-1, :] = 0.05
     zE[0 , :] = 0.05
 
-    tensor[20:31, 559:614] = zD
-    tensor[16:40, 182:382] = zE
+    tensor[10:30, 520:575] = zD
+    tensor[35:57, 192:392] = zE
 
     return tensor
 
