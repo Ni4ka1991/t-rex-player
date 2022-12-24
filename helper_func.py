@@ -67,8 +67,8 @@ def splitTensorToZones( frame_tensor ):
     zoneA = frame_tensor[0][:, 18:82]  #dino right in the frame
     zoneB = frame_tensor[0][:, 82:146]
     zoneC = frame_tensor[0][:, 146:]
-    zoneD = frame_tensor[0][10:30, 520:575]
-    zoneE = frame_tensor[0][35:57, 192:392]
+    zoneD = frame_tensor[0][5:18, 535:590]
+    zoneE = frame_tensor[0][35:57, 200:400]
     
     return ( zoneA, zoneB, zoneC, zoneD, zoneE )
 
@@ -81,11 +81,11 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     zD = torch.clone( zoneD )
     zE = torch.clone( zoneE )
 
-    tensor = torch.cat(( zA, zB, zC), dim = 1 )
-    
     zA[:, -1] = 0.05
     zB[:, -1] = 0.05
     zC[:, -1] = 0.05
+    tensor = torch.cat(( zA, zB, zC), dim = 1 )
+    
     
     zD[:, -1] = 0.05
     zD[:,  0] = 0.05
@@ -98,8 +98,8 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     zE[-1, :] = 0.05
     zE[0 , :] = 0.05
 
-    tensor[10:30, 520:575] = zD
-    tensor[35:57, 192:392] = zE
+    tensor[5:18, 520:575] = zD
+    tensor[35:57, 182:382] = zE
 
     return tensor
 
