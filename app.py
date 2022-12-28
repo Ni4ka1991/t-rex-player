@@ -57,6 +57,10 @@ def update( frame_i ):
     zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
     
     img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
+
+    #detecting
+    X_zoneA = loadImageAsTensor()
+
     plot.set_data( data_x, data_y )
     return img, "figure 1"
     
