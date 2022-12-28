@@ -22,11 +22,9 @@ browser, canvas = connectToClient()
 frame_tensor    = getCanvasTensor( browser, canvas )
 zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
 
-data_x = [ i for i in range(50) ]
-data_y = [ i for i in range(50) ]
+data_x = [ i for i in range(150) ]
+data_y = [ i for i in range(150) ]
 
-data_x2 = [ 4, 5, 6 ]
-data_y2 = [ 4, 5, 6 ]
 def initPlot(): 
     global img
     global fig
@@ -34,6 +32,7 @@ def initPlot():
     global frame_tensor
     global zoneA, zoneB, zoneC, zoneD, zoneE
     global data_x, data_y
+    global plot
     
     fig = plt.figure(figsize = ( 5, 5 ))
     rows = 3
@@ -44,9 +43,6 @@ def initPlot():
 
     fig.add_subplot( rows, cols, 2 )
     plot, = plt.plot( data_x, data_y )                                       #var "plot" save 2 links
-
-    fig.add_subplot( rows, cols, 3 )
-    plot, = plt.plot( data_x2, data_y2 )                                       #var "plot" save 2 links
 
     animation = FuncAnimation( plt.gcf(), update, frames=10, interval = 1 )
     
