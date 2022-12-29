@@ -59,7 +59,9 @@ def update( frame_i ):
     img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
 
     #detecting
-    X_zoneA = loadImageAsTensor()
+    Y = detectImminentThreat( zoneA, weights_t_rex )
+    print(Y.shape)
+    print(Y)
 
     plot.set_data( data_x, data_y )
     return img, "figure 1"
