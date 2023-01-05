@@ -63,8 +63,8 @@ def detectPlayerPosition( tensor, weights ):
     arr_dim = weights_t_rex.shape[3]
     t_rex_max = ds.getMaxpooledImg( arr_dim, weights_t_rex, tensor_t_rex, "v" )
     t_rex_pos = torch.argmax( t_rex_max )
-    return t_rex_pos
-#    print( f"t_rex_position >>> {t_rex_pos}" )
+#    return t_rex_pos
+    print( f"t_rex_position >>> {t_rex_pos}" )
 
 '''
 ## detect imminent threat
