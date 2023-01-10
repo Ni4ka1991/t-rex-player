@@ -18,11 +18,14 @@ from os import system
 class detectSomething():
 
     def getMaxpooledImg( self, arr_dim, weights, tensor, maxpool_axis ):
-        
+        print("%"*20 + "input tensor.shape", tensor.shape) 
+        print("%"*20 + "input weights.shape", weights.shape) 
         filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
         filteredImg.weight = nn.Parameter( weights )
+
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
+        print(">"*25 + "after conv2d image.shape", shape)
 #        viewImg( y_filtered )
 
         ###select maxpooling axis
