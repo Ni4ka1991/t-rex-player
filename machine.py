@@ -19,13 +19,11 @@ from os import system
 def detectPlayerPosition( tensor, weights ):
     model = nn.Sequential(
         nn.Conv2d( 1, 1, ( 40,40 )),
-#        nn.MaxPool2d(( 1, 25 ))
+        nn.MaxPool2d(( 1, 19 ))
     )
-    
-    model[0].weight = nn.Parameter( weights_t_rex.view( 1, 1, 40, 40 )) 
+    model[0].weight = nn.Parameter( weights ) 
+
     y = model( tensor )
-    print( "!"*13+"y.shape", y.shape )
-    y_pos = torch.agrmax( y )
+    y_pos = torch.argmax( y )
 
     return y_pos
-
