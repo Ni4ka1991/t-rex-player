@@ -60,25 +60,12 @@ def update( frame_i ):
     img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
 
     #detecting
-    print("zoneA info")
-    print(">"*30+"shape", zoneA.shape)
-    print(">"*30+"type", type(zoneA))
-    print("- "*10)
-    zoneA = zoneA.unsqueeze( 0 )
-    zoneA = zoneA.unsqueeze( 0 )
-    print("zoneA.unsqueeze info")
-    print("!"*30+"shape", zoneA.shape)
-    print("!"*30+"type", type(zoneA))
-    print("- "*10)
+    zoneA = invert( zoneA.unsqueeze( 0 ))
     
-    print("weights_t_rex info")
-    print("?"*30+"shape",     weights_t_rex.shape) 
-    print("?"*30+"type", type(weights_t_rex))
-    print("- "*10)
     Y = detectPlayerPosition( zoneA, weights_t_rex )
     
-#    data_y.pop(0)
-#    data_y.append(Y.item())
+    data_y.pop(0)
+    data_y.append(Y.item())
 
     plot.set_data( data_x, data_y )
 #    quit()
