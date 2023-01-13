@@ -25,5 +25,5 @@ def detectPlayerPosition( tensor, weights ):
 
     y = model( tensor )
     y_pos = torch.argmax( y )
-
+    
     return y_pos

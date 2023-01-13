@@ -3,7 +3,7 @@
 #PROJECT MODULES
 from data import *
 from client import *
-from detect import *
+#from detect import *
 from machine import *
 
 #OTHER
@@ -24,8 +24,9 @@ browser, canvas = connectToClient()
 frame_tensor    = getCanvasTensor( browser, canvas )
 zoneA, zoneB, zoneC, zoneD, zoneE = splitTensorToZones( frame_tensor )
 
-data_x = [ i for i in range(150) ]
-data_y = [ i for i in range(150) ]
+data_x = [ i for i in range( 150 ) ]
+data_y = [ i for i in range( 150 ) ]
+#data_y = [ random.uniform( -0.2,0.2 ) for i in range( 150 ) ]
 
 def initPlot(): 
     global img
@@ -63,7 +64,7 @@ def update( frame_i ):
     #detecting
     zoneA = invert(zoneA.unsqueeze( 0 ))
     Y = detectPlayerPosition( zoneA, weights_t_rex )
-
+    print( "Y.item()", Y.item() )
     data_y.pop(0)
     data_y.append(Y.item())
 
