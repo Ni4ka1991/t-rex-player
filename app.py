@@ -60,15 +60,15 @@ def update( frame_i ):
     img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
 
     #detecting
-    zoneA = invert( zoneA.unsqueeze( 0 ))
+    zoneA = invert(zoneA.unsqueeze(0).unsqueeze(0))
     
     Y = detectPlayerPosition( zoneA, weights_t_rex )
-    
-    data_y.pop(0)
-    data_y.append(Y.item())
+
+#    data_y.pop(0)
+#    data_y.append(Y.item())
 
     plot.set_data( data_x, data_y )
-#    quit()
+    quit()
     return img, "figure 1"
 
 plot_img = initPlot( )
