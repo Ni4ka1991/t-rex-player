@@ -23,8 +23,9 @@ class detectSomething():
 
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
+#        print( "conv2d.shape >>>", shape )
 
-        maxpoolingImg = nn.MaxPool2d(( 1, shape[3] ))
+        maxpoolingImg = nn.MaxPool2d(( 1, shape[2] ))
         y_max = maxpoolingImg( y_filtered )        
                 
         return y_max
@@ -39,11 +40,11 @@ ds = detectSomething()
 ##detect t-rex
 def detectPlayerPosition( tensor, weights ):
     arr_dim = weights.shape[3]
+#    print( "arr_dim >>>", arr_dim )
     t_rex_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     t_rex_pos = torch.argmax( t_rex_max )
 
     return t_rex_pos
-#    print( f"t_rex_position >>> {t_rex_pos}" )
 
 def detectPlayerPosition_D( tensor, weights ):
     model = nn.Sequential(
