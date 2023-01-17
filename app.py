@@ -62,6 +62,7 @@ def update( frame_i ):
     #detecting
     zoneA = invert( zoneA.unsqueeze( 0 ))
     
+#    Y = detectPlayerPosition_D( zoneA, weights_t_rex )
     Y = detectPlayerPosition( zoneA, weights_t_rex )
     
     data_y.pop(0)
