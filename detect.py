@@ -18,27 +18,22 @@ from os import system
 class detectSomething():
 
     def getMaxpooledImg( self, arr_dim, weights, tensor, maxpool_axis ):
-        print( "input tensor.shape", tensor.shape )
-        print( "input weights.shape", weights.shape )
-        
         filteredImg = nn.Conv2d( 1, 1, ( arr_dim, arr_dim ))
         filteredImg.weight = nn.Parameter( weights )
 
         y_filtered = filteredImg( tensor )
         shape = y_filtered.shape
-#        viewImg( y_filtered )
 
         ###select maxpooling axis
         if maxpool_axis == "v":
             pass
         elif maxpool_axis == "h":
-            y_filtered = y_filtered.permute( 0, 1, 3, 2 )
+            y_filtered = y_filtered.permute( 0, 2, 1 )
             shape = y_filtered.shape
 
-
-        maxpoolingImg = nn.MaxPool2d(( 1, shape[3] ))
+        maxpoolingImg = nn.MaxPool2d(( 1, shape[2] ))
         y_max = maxpoolingImg( y_filtered )        
-        print( "y_max >>>", y_max )
+
         return y_max
 
 
@@ -67,7 +62,6 @@ def detectPlayerPosition( tensor, weights ):
     t_rex_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     t_rex_pos = torch.argmax( t_rex_max )
 
-    print( f"t_rex_position >>> {t_rex_pos}" )
     return t_rex_pos
 
 '''
