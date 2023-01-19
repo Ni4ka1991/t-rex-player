@@ -4,6 +4,7 @@
 from data import *
 from client import *
 from detect import *
+from test_detect import *
 
 #OTHER
 from os import system
@@ -60,19 +61,20 @@ def update( frame_i ):
     img.set_data( catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ))
 
     #detecting
-    zoneA = invert(zoneA.unsqueeze(0))
+#    zoneA = invert(zoneA.unsqueeze(0))
     zoneB = invert(zoneB.unsqueeze(0))
+    print( "zoneB.shape >>>>", zoneB.shape )
+    print( "weights_cactus.shape >>>>", weights_cactus.shape )
     
-    Ya = detectPlayerPosition( zoneA, weights_t_rex )
+#    Ya = detectPlayerPosition( zoneA, weights_t_rex )
     Yb = detectImminentThreat( zoneB, weights_cactus )
     
-    print(Yb)
 
-    data_y.pop(0)
-    data_y.append(Ya.item())
+#    data_y.pop(0)
+#    data_y.append(Ya.item())
 
     plot.set_data( data_x, data_y )
-#    quit()
+    quit()
     return img, "figure 1"
 
 plot_img = initPlot( )

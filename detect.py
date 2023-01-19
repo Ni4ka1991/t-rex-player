@@ -8,7 +8,6 @@ from torchvision import transforms
 from torchvision.io import read_image
 
 #NUMPY
-import time
 import random
 import numpy as np
 from helper_func import *
@@ -63,6 +62,7 @@ def detectPlayerPosition( tensor, weights ):
 def detectImminentThreat( tensor, weights ):
 
     arr_dim = weights.shape[3]                                               
+    print("arr_dim cactus >>>", arr_dim )
     cactus_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     cactus_v_border = ds.getCoordinates( cactus_max )
 
