@@ -31,11 +31,11 @@ class detectSomething():
             y_filtered = y_filtered.permute( 0, 2, 1 )
             shape = y_filtered.shape
 
+
         maxpoolingImg = nn.MaxPool2d(( 1, shape[2] ))
         y_max = maxpoolingImg( y_filtered )        
 
         return y_max
-
 
                 
     def getCoordinates( self, y ):
@@ -49,14 +49,10 @@ class detectSomething():
 #        return y_np_arr        
         return upper_limit
 
-
 #class initialization 
 ds = detectSomething()
 
-
 #DETECTING
-
-##detect t-rex
 def detectPlayerPosition( tensor, weights ):
     arr_dim = weights.shape[3]
     t_rex_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
@@ -64,13 +60,16 @@ def detectPlayerPosition( tensor, weights ):
 
     return t_rex_pos
 
-'''
-## detect imminent threat
-arr_dim = weights_cactus.shape[3]                                               
-cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_cactus, "v" )
-cactus_v_border = ds.getCoordinates( cactus_max )
-print( f"Imminent threat height. >>> {cactus_v_border}" )
+def detectImminentThreat( tensor, weights ):
 
+    arr_dim = weights.shape[3]                                               
+    cactus_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
+    cactus_v_border = ds.getCoordinates( cactus_max )
+
+    print( f"Imminent threat height. >>> {cactus_v_border}" )
+#    return cactus_v_border
+
+'''
 ## detect dictance to cactus
 arr_dim = weights_cactus.shape[3]
 cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )

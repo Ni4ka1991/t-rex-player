@@ -61,11 +61,15 @@ def update( frame_i ):
 
     #detecting
     zoneA = invert(zoneA.unsqueeze(0))
+    zoneB = invert(zoneB.unsqueeze(0))
     
-    Y = detectPlayerPosition( zoneA, weights_t_rex )
+    Ya = detectPlayerPosition( zoneA, weights_t_rex )
+    Yb = detectImminentThreat( zoneB, weights_cactus )
+    
+    print(Yb)
 
     data_y.pop(0)
-    data_y.append(Y.item())
+    data_y.append(Ya.item())
 
     plot.set_data( data_x, data_y )
 #    quit()
