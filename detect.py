@@ -41,11 +41,8 @@ class detectSomething():
         y_np_arr = getDataArray( y )
         y_mean = np.mean( y_np_arr )
         y_max = np.max( y_np_arr )
-#        viewData( y_np_arr, y_mean, "data visualization" )
-#        print( np.where( y_np_arr > y_mean ))
         detect_limit = ( y_mean + y_max ) / 2
         upper_limit = np.where( y_np_arr > detect_limit )[0][0]
-#        return y_np_arr        
         return upper_limit
 
 #class initialization 
@@ -62,12 +59,11 @@ def detectPlayerPosition( tensor, weights ):
 def detectImminentThreat( tensor, weights ):
 
     arr_dim = weights.shape[3]                                               
-    print("arr_dim cactus >>>", arr_dim )
     cactus_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     cactus_v_border = ds.getCoordinates( cactus_max )
 
-    print( f"Imminent threat height. >>> {cactus_v_border}" )
-#    return cactus_v_border
+#    print( "cactus_vertical_border >>>", cactus_v_border )
+    return cactus_v_border
 
 '''
 ## detect dictance to cactus

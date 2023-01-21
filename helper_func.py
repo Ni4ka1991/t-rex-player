@@ -87,7 +87,7 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     tensor = torch.cat(( zA, zB, zC), dim = 1 )
     
     
-    zD[:, -1] = 0.05
+#    zD[:, -1] = 0.05
     zD[:,  0] = 0.05
     zD[-1, :] = 0.05
     zD[0,  :] = 0.05
