@@ -27,11 +27,14 @@ class detectSomething():
         maxpoolingImg = nn.MaxPool2d(( 1, shape[2] ))
         y_max = maxpoolingImg( y_filtered )        
 
-        print("maxpoolingImg >>>", y_max )
+#        print("maxpoolingImg >>>", y_max )
         return y_max
                 
     def getCoordinates( self, y ):
+        print( "input data - tensor >>>", y )
         y_np_arr = getDataArray( y )                              #get array from tensor
+        print( "array printed here >>>\n", y_np_arr )
+ #       input( "hit Enter to continue ..." )
         y_mean = np.mean( y_np_arr )
         print( "y_mean >>>", y_mean )
         y_max = np.max( y_np_arr )

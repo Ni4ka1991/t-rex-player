@@ -3,7 +3,7 @@
 #PROJECT MODULES
 from data import *
 from client import *
-from detect import *
+#from detect import *
 from test_detect import *
 
 #OTHER
