@@ -2,6 +2,7 @@
 
 #PROJECT MODULES
 from data import *
+from helper_func import *
 from client import *
 from detect import *
 #from test_detect import *
@@ -64,10 +65,13 @@ def update( frame_i ):
     zoneA = invert(zoneA.unsqueeze(0))
     zoneB = invert(zoneB.unsqueeze(0))
     zoneC = invert(zoneC.unsqueeze(0))
-    
-    Ya = detectPlayerPosition( zoneA, weights_t_rex )
-    Yb = detectImminentThreat( zoneB, weights_cactus )
+#    zoneE = invert(zoneE.unsqueeze(0))
+    print(zoneE)
+
+    Ya = detectPlayerPosition  ( zoneA, weights_t_rex )
+    Yb = detectImminentThreat  ( zoneB, weights_cactus )
     Yc = detectDistanceToCactus( zoneC, weights_cactus )
+#    Ye = detectStatusGame      ( zoneE, weights_go )
 
     data_y.pop(0)
     data_y.append(Yc.item())
@@ -75,7 +79,6 @@ def update( frame_i ):
     plot.set_data( data_x, data_y )
 #    quit()
     return img, "figure 1"
-
 plot_img = initPlot( )
 
 

@@ -74,19 +74,21 @@ def detectDistanceToCactus( tensor, weights ):
 #    print( f"Position of first threat >>> {cactus_first_threat}" )
     return cactus_first_threat / 10
 
+def detectStatusGame( tensor, weights ):
+    getConvTensor = nn.Conv2d( 1, 1, ( 22, 200 ))
+    getConvTensor.weight = nn.Parameter( weights )
+    conv_result = getConvTensor( tensor ).detach()
+    sq = torch.squeeze( conv_result )
+    item = sq.item()/100
+    print( ">"*20, item )
 
+    '''
+    if item > 1.5:
+        print( "GAME OVER!!!" )
+    else:
+        print( f" <<< CONTINUE >>>" )
+ Game( tensor, weights )
 '''
-## detect status game
-getConvTensor = nn.Conv2d( 1, 1, ( 22, 200 ))
-getConvTensor.weight = nn.Parameter( weights_go )
-conv_result = getConvTensor( tensor_go ).detach()
-sq = torch.squeeze( conv_result )
-item = sq.item()/100
-if item > 1.5:
-    print( "GAME OVER!!!" )
-else:
-    print( f" <<< CONTINUE >>>" )
-    
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 13, 11 ))
 n_1 = int( input( "Enter the number_1 from the range 0...9 >>>" ))
