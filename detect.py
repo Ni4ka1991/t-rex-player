@@ -50,6 +50,7 @@ ds = detectSomething()
 
 #DETECTING
 def detectPlayerPosition( tensor, weights ):
+    #here we define t-rex vertical coordinates
     arr_dim = weights.shape[3]
     t_rex_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     t_rex_pos = torch.argmax( t_rex_max )
@@ -57,7 +58,8 @@ def detectPlayerPosition( tensor, weights ):
     return t_rex_pos
 
 def detectImminentThreat( tensor, weights ):
-
+    #here we define the upper border of the cactus (cactus height)
+    #!preferably to remove the clouds from the definition arrea
     arr_dim = weights.shape[3]                                               
     cactus_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "v" )
     cactus_v_border = ds.getCoordinates( cactus_max )
@@ -65,13 +67,15 @@ def detectImminentThreat( tensor, weights ):
 #    print( "cactus_vertical_border >>>", cactus_v_border )
     return cactus_v_border
 
-'''
-## detect dictance to cactus
-arr_dim = weights_cactus.shape[3]
-cactus_max = ds.getMaxpooledImg( arr_dim, weights_cactus, tensor_distance, "h" )
-cactus_first_threat = ds.getCoordinates( cactus_max )
-print( f"Position of first threat >>> {cactus_first_threat}" )
+def detectDistanceToCactus( tensor, weights ):
+    arr_dim = weights.shape[3]
+    cactus_max = ds.getMaxpooledImg( arr_dim, weights, tensor, "h" )
+    cactus_first_threat = ds.getCoordinates( cactus_max )
+#    print( f"Position of first threat >>> {cactus_first_threat}" )
+    return cactus_first_threat / 10
 
+
+'''
 ## detect status game
 getConvTensor = nn.Conv2d( 1, 1, ( 22, 200 ))
 getConvTensor.weight = nn.Parameter( weights_go )

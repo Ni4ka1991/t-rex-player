@@ -64,11 +64,11 @@ def viewData( data_1, data_2, title ):
 
 def splitTensorToZones( frame_tensor ):
     
-    zoneA = frame_tensor[0][:, 18:82]  #dino right in the frame
-    zoneB = frame_tensor[0][:, 82:146]
-    zoneC = frame_tensor[0][:, 146:]
-    zoneD = frame_tensor[0][9:22, 533:588]
-    zoneE = frame_tensor[0][35:57, 200:400]
+    zoneA = frame_tensor[0][:, 18:82]           #dino right in the frame
+    zoneB = frame_tensor[0][:, 82:146]          #imminent_threat zone
+    zoneC = frame_tensor[0][:, 146:]            #distance zone
+    zoneD = frame_tensor[0][9:22, 533:588]      #score zone
+    zoneE = frame_tensor[0][35:57, 200:400]     #game_over zone
     
     return ( zoneA, zoneB, zoneC, zoneD, zoneE )
 
