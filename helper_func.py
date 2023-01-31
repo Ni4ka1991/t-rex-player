@@ -93,10 +93,10 @@ def catZonesToTensor( zoneA, zoneB, zoneC, zoneD, zoneE ):
     zD[0,  :] = 0.05
     
 
-    zE[:, -1] = 0.05
-    zE[:,  0] = 0.05
-    zE[-1, :] = 0.05
-    zE[0 , :] = 0.05
+#   zE[:, -1] = 0.05
+#   zE[:,  0] = 0.05
+#   zE[-1, :] = 0.05
+#   zE[0 , :] = 0.05
 
     tensor[9:22, 515:570] = zD
     tensor[35:57, 182:382] = zE
