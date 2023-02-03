@@ -49,8 +49,9 @@ def update( frame_i ):
 
     
     img.set_data( zoneE )
-    
+    zoneE = zoneE.unsqueeze(0)
     detectStatusGame( zoneE, weights_go )
+    quit()
 
     return img, "figure 1"
 
