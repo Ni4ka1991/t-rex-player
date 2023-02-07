@@ -1,20 +1,14 @@
 #module Enviroment
 
 from os import system
+from agent import *
 import math
 
-#one hot encoding
-UP    = [1, 0, 0, 0]
-RIGHT = [0, 1, 0, 0]
-DOWN  = [0, 0, 1, 0]
-LEFT  = [0, 0, 0, 1]
-
-ACTION = [
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT
-]
+REW_HIT     = 2
+REW_CLOSER  = 1
+REW_NOTHING = 0
+REW_FARTHER = -1
+REW_OUTSIDE = -2
 
 class Enviroment:
 
@@ -61,16 +55,13 @@ class Enviroment:
         elif ( action == RIGHT ):
             self.player_coords[0] += 1
 
+        reward = REW_NOTHING 
 
+        state = [
+            self.player_coords,
+            self.distance( self.player_coords, self.target_coords ),
+            reward
+        ]
 
-
-
-
-
-
-
-
-
-
-
+        return state
 
