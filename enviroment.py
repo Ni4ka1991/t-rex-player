@@ -3,6 +3,19 @@
 from os import system
 import math
 
+#one hot encoding
+UP    = [1, 0, 0, 0]
+RIGHT = [0, 1, 0, 0]
+DOWN  = [0, 0, 1, 0]
+LEFT  = [0, 0, 0, 1]
+
+ACTION = [
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+]
+
 class Enviroment:
 
     def __init__( self ):
@@ -39,4 +52,25 @@ class Enviroment:
 
 
     def step( self, action = None ):
-        self.player_coords[0] += 1
+        if ( action == DOWN ):
+            self.player_coords[1] += 1
+        elif ( action == UP ):
+            self.player_coords[1] -= 1
+        elif ( action == LEFT ):
+            self.player_coords[0] -= 1
+        elif ( action == RIGHT ):
+            self.player_coords[0] += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
