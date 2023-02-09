@@ -77,11 +77,6 @@ class Enviroment:
                 reward = REW_OUTSIDE
 
 
-
-
-
-
-
         state = [
             self.player_coords,
             distance,
