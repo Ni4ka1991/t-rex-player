@@ -16,10 +16,12 @@ ACTION = [
 
 class Agent():
     def __init__( self ):
-        pass
+        self.last_state = None   #short memory
 
 
     def selectAction( self ):
-       return DOWN 
+        return DOWN 
 
-
+    
+    def rememberState( self, state ):
+        self.last_state = state

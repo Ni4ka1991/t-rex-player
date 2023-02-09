@@ -5,13 +5,14 @@ from agent import *
 
 
 
-env = Enviroment()
 ag = Agent()
+env = Enviroment( ag )
 
 
 for s in range( 3 ):
     env.render()
     env.distance( env.player_coords, env.target_coords )
     state = env.step( ag.selectAction())
+    ag.rememberState = state
     print( f"state >>>", state )
-    sleep(2.)
+    sleep(3.)

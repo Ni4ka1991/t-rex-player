@@ -12,8 +12,9 @@ REW_OUTSIDE = -2
 
 class Enviroment:
 
-    def __init__( self ):
+    def __init__( self, ag ):
         self.reset()
+        self.ag = ag
 
     def reset( self ):
         self.player_coords = [ 0, 0 ]
@@ -55,11 +56,35 @@ class Enviroment:
         elif ( action == RIGHT ):
             self.player_coords[0] += 1
 
+        distance = self.distance( self.player_coords, self.target_coords )
         reward = REW_NOTHING 
+
+        if ( self.ag.last_state != None ):
+            last_distance = self.ag.last_state[1]
+            if distance < last_distance:
+                reward = REW_CLOSER
+            if distance > last_distance:
+                reward = REW_FARTHER
+
+        if ( self.player_coords == self.target_coords ):
+                reward = REW_HIT
+
+
+        if  self.player_coords[0] > 4 or\
+            self.player_coords[1] > 4 or\
+            self.player_coords[0] > 0 or\
+            self.player_coords[1] > 0 :
+                reward = REW_OUTSIDE
+
+
+
+
+
+
 
         state = [
             self.player_coords,
-            self.distance( self.player_coords, self.target_coords ),
+            distance,
             reward
         ]
 
