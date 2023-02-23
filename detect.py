@@ -82,12 +82,13 @@ def detectStatusGame( tensor, weights ):
     item = sq.item()/100
     print( ">"*20, item )
 
-    '''
+'''
     if item > 1.5:
         print( "GAME OVER!!!" )
     else:
         print( f" <<< CONTINUE >>>" )
  Game( tensor, weights )
+'''
 '''
 ## detect numbers
 getConvTensor = nn.Conv2d( 1, 1, ( 13, 11 ))
