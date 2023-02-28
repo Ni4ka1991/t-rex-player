@@ -57,14 +57,17 @@ class Enviroment:
             self.player_coords[0] += 1
 
         distance = self.distance( self.player_coords, self.target_coords )
-        reward = REW_NOTHING 
 
-        if ( self.ag.last_state != None ):
+        reward = REW_NOTHING
+
+        if self.ag.last_state != None:
             last_distance = self.ag.last_state[1]
+
             if distance < last_distance:
                 reward = REW_CLOSER
             if distance > last_distance:
                 reward = REW_FARTHER
+            
 
         if ( self.player_coords == self.target_coords ):
                 reward = REW_HIT

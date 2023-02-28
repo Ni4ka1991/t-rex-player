@@ -1,5 +1,5 @@
-# .gitignore
+.gitignore
 __pycache__/
 #work_data/
-venv_trex/
+venv-trex/
 drivers/
