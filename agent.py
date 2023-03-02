@@ -1,6 +1,4 @@
 #agent module
-
-
 #one hot encoding
 UP    = [1, 0, 0, 0]
 RIGHT = [0, 1, 0, 0]

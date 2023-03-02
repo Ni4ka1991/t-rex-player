@@ -6,12 +6,16 @@ from agent import *
 
 
 ag = Agent()
-env = Enviroment( ag )
+env = Enviroment( ag )    #init self.reset()
 
 
-for s in range( 3 ):
+for s in range( 4 ):
     env.render()
-    env.distance( env.player_coords, env.target_coords )
-    state = env.step( ag.selectAction())
-    ag.rememberState = state
+    state, done = env.step(ag.selectAction( ))
+    ag.rememberState( state )
+    print( state )
     sleep(3.)
+
+    if done:
+        print( "Episode done" )
+        break
