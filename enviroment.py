@@ -47,48 +47,18 @@ class Enviroment:
 
 
     def step( self, action = None ):
-        
-        
-        if ( action == DOWN ):
-            self.player_coords[1] += 1
-        elif ( action == UP ):
-            self.player_coords[1] -= 1
-        elif ( action == LEFT ):
-            self.player_coords[0] -= 1
-        elif ( action == RIGHT ):
-            self.player_coords[0] += 1
 
+        if action == DOWN:
+            print("Hi, friends!!!")
+            state = 12
+            self.done = False
+        '''
         distance = self.distance( self.player_coords, self.target_coords )
 
         reward = REW_NOTHING
-       #print( f"self.ag.last_state >>>", self.ag.last_state )
-
-        if self.ag.last_state != None:
-            last_distance = self.ag.last_state[1]
-
-            if distance < last_distance:
-                reward = REW_CLOSER
-            if distance > last_distance:
-                reward = REW_FARTHER
-            
-
-        if ( self.player_coords == self.target_coords ):
-            reward = REW_HIT
-            self.done = True
-
-        ''' 
-        if self.player_coords[0] > 4 or\
-           self.player_coords[1] > 4 or\
-           self.player_coords[0] > 0 or\
-           self.player_coords[1] > 0 :
-            reward = REW_OUTSIDE
-        '''
-
-        state = [
             self.player_coords,
             distance,
             reward
         ]
-
+       ''' 
         return state, self.done
-
