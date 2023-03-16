@@ -48,21 +48,26 @@ class Enviroment:
 
     def step( self, action = None ):
         
+        reward = REW_NOTHING
+        ## ACTIONS ##
         
         if ( action == DOWN ):
             self.player_coords[1] += 1
+        '''
         elif ( action == UP ):
             self.player_coords[1] -= 1
         elif ( action == LEFT ):
             self.player_coords[0] -= 1
         elif ( action == RIGHT ):
             self.player_coords[0] += 1
-
+        '''
         distance = self.distance( self.player_coords, self.target_coords )
 
-        reward = REW_NOTHING
-       #print( f"self.ag.last_state >>>", self.ag.last_state )
+       
 
+       ## STATES ##
+       #print( f"self.ag.last_state >>>", self.ag.last_state )
+        '''
         if self.ag.last_state != None:
             last_distance = self.ag.last_state[1]
 
@@ -75,7 +80,7 @@ class Enviroment:
         if ( self.player_coords == self.target_coords ):
             reward = REW_HIT
             self.done = True
-
+        '''
         ''' 
         if self.player_coords[0] > 4 or\
            self.player_coords[1] > 4 or\
