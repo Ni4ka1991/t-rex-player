@@ -9,12 +9,12 @@ ag = Agent()
 env = Enviroment( ag )    #init self.reset()
 
 
-for s in range( 4 ):
+for s in range( 8 ):
     env.render()
     state, done = env.step(ag.selectAction( ))
     ag.rememberState( state )
     print( state )
-    sleep(3.)
+    sleep(4.)
 
     if done:
         print( "Episode done" )

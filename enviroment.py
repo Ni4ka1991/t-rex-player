@@ -36,12 +36,12 @@ class Enviroment:
                     print(" ", end = "|" )
             print()
             print( "_" * 11 )
-        print( f"score = {self.player_score}" )
+       #print( f"score = {self.player_score}" )
 
 
     def distance( self, point1, point2 ):
         dist = math.sqrt(( point1[0] - point2[0])**2 + ( point1[1] - point2[1])**2 ) 
-        print( f"distance:", dist )
+      #print( f"distance:", dist )
         return dist
 #        return math.sqrt(( point1[0] - point2[0])**2 + ( point1[1] - point2[1])**2 ) 
 
@@ -61,7 +61,7 @@ class Enviroment:
         distance = self.distance( self.player_coords, self.target_coords )
 
         reward = REW_NOTHING
-        print( f"self.ag.last_state >>>", self.ag.last_state )
+       #print( f"self.ag.last_state >>>", self.ag.last_state )
 
         if self.ag.last_state != None:
             last_distance = self.ag.last_state[1]
@@ -76,13 +76,13 @@ class Enviroment:
             reward = REW_HIT
             self.done = True
 
-        
+        ''' 
         if self.player_coords[0] > 4 or\
            self.player_coords[1] > 4 or\
            self.player_coords[0] > 0 or\
            self.player_coords[1] > 0 :
             reward = REW_OUTSIDE
-        
+        '''
 
         state = [
             self.player_coords,
